@@ -8,10 +8,13 @@ class DeviseCreateRestaurants < ActiveRecord::Migration[6.1]
       t.string :encrypted_password, null: false, default: ""
       t.string :name, null: false
       t.text :explanation, null: false
-      t.string :price_range, null: false
+      t.string :price_upper_limit, null: false
+      t.string :price_lower_limit, null: false
       t.text :hp_url
       t.string :reservation_method, null: false
       t.string :phone_number, null: false
+      t.string :post_code, null: false
+      t.string :address, null: false
 
       ## Recoverable
       t.string   :reset_password_token

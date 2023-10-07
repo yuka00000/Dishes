@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 pt-3 offset-md-1">
+      <h4>投稿フォーム</h4>
+      <%= form_with model: @post do |f| %>
+        <h5>画像</h5>
+        <%= f.file_field :post_image, accept: "image/*" %>
+        <h5>タイトル</h5>
+        <%= f.text_field :title %>
+        <h5>内容</h5>
+        <%= f.text_area :body %>
+        <h5>お店の名前</h5>
+        <input type="text" autocomplete="on" list="testlist">
+        <datalist id="testlist"></datalist>
+        <h5>リンク</h5>
+        <%= f.submit '投稿する' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+
+//オートコンプリートの中を作成
+<%#= Restaurant.all.pluck(:name) %>
+let arr = ['java', 'vue.js', 'react.js', 'C#', 'javascript'];
+
+//datalistにオートコンプリート値を設定
+for(let item of arr){
+
+    // optionタグを生成
+    let option = document.createElement("option");
+
+    // 値に配列の要素を代入
+    option.value = item;
+
+    // datalist要素の子要素として生成
+    document.getElementById("testlist").appendChild(option);
+
+}
+
+</script>
