@@ -1,0 +1,2 @@
+module RestaurantInfo::HomesHelper
+end

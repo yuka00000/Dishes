@@ -1,0 +1,2 @@
+module RestaurantInfo::RestaurantsHelper
+end

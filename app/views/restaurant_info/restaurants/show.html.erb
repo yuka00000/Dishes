@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 pt-3 offset-md-1">
+      <h4 class="sign_up mb-3"><%= @restaurant.name %> マイページ</h4>
+        <h5>登録情報</h5>
+          <table class="table table-bordered">
+            <tr>
+              <th class="table-secondary w-25">店名</th>
+              <td><%= @restaurant.name %> </td>
+            </tr>
+            <tr>
+              <th class="table-secondary">紹介文</th>
+              <td><%= @restaurant.explanation %></td>
+            </tr>
+            <tr>
+              <th class="table-secondary">所在地</th>
+              <td>〒<%= @restaurant.post_code %> <%= @restaurant.address %></td>
+            </tr>
+            <tr>
+              <th class="table-secondary">価格帯</th>
+              <td><%= @restaurant.price_lower_limit %> ～ <%= @restaurant.price_upper_limit %></td>
+            </tr>
+            <tr>
+              <th class="table-secondary">ホームページURL</th>
+              <td><%= @restaurant.hp_url %></td>
+            </tr>
+            <tr>
+              <th class="table-secondary">予約方法 </th>
+              <td><%= @restaurant.reservation_method %></td>
+            </tr>
+            <tr>
+              <th class="table-secondary">メールアドレス </th>
+              <td><%= @restaurant.email %></td>
+            </tr>
+            <tr>
+              <th class="table-secondary">電話番号</th>
+              <td><%= @restaurant.phone_number %></td>
+            </tr>
+          </table>
+          <%= link_to '編集する', edit_restaurant_info_restaurant_path(@restaurant), class: "btn btn-success mb-2 btn-sm" %>
+    </div>
+  </div>
+</div>

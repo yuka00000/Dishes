@@ -16,11 +16,11 @@
           <% @posts.each do |post| %>
           <tr>
             <td>
-              <%= link_to user_path(post.user.id) do %>
-                <%= image_tag post.user.post_image(80, 80) %>
+              <%= link_to post_path(post) do %>
+                <%= image_tag post.post_image(80, 80) %>
               <% end %>
             </td>
-            <td><%= link_to post.title, post_path(post.id) %></td>
+            <td><%= link_to post.title, post_path(post) %></td>
             <td><%= post.body %></td>
           </tr>
           <% end %>

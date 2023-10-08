@@ -1,7 +1,7 @@
 class Public::UsersController < ApplicationController
 
   def show
-    @user =　User.new(params[:id])
+    @user = User.find(params[:id])
     @posts = @user.posts
   end
 end
