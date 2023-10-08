@@ -1,1 +1,100 @@
-a
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 pt-3 offset-md-1">
+      <h5 class="sign_up mb-3">飲食店 編集画面</h5>
+      <% if @restaurant.errors.any? %>
+        <div id="error_explanation">
+        <h3><%= @restaurant.errors.count %> error prohibited this obj from being saved:</h3>
+          <ul>
+            <% @restaurant.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+        <%= form_with model: @restaurant, url: restaurant_info_restaurant_path do |f| %>
+          <table>
+            <tr>
+              <th><%= f.label :イメージ画像 %></label></th>
+              <td></td>
+              <td>
+                <%= f.file_field :restaurant_image, placeholder: "プロフィール画像", accept: "image/*" %> <br>
+              </td>
+              <tr>
+              <tr>
+              <th><%= f.label :店名 %></th>
+              <td></td>
+              <td>
+                <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "令和食堂" %>
+              </td>
+            </tr>
+            <tr>
+              <th><%= f.label :紹介文 %></th>
+              <td></td>
+              <td>
+                <%= f.text_field :explanation, autofocus: true, size: "40x40", autocomplete: "explanation", placeholder: "地元で人気の食堂です！" %>
+              </td>
+            </tr>
+            <tr>
+              <th><%= f.label :所在地 %></th>
+              <td><%= f.label :〒 %></td>
+              <td>
+                <%= f.text_field :post_code, autofocus: true, autocomplete: "post_code", placeholder: "000000" %>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+               <td></td>
+              <td>
+                <%= f.text_field :address, autofocus: true, size: "40x40", autocomplete: "address", placeholder: "東京都渋谷区代々木神園町0-0" %>
+              </td>
+            </tr>
+            <tr>
+              <th><%= f.label :価格帯 %></th>
+              <td></td>
+              <td>
+                <%= f.select :price_lower_limit, [["999円以下"], ["1,000円", "1,000円"], ["2,000円", "2,000円"], ["3,000円", "3,000円"], ["4,000円", "4,000円"], ["5,000円", "5,000円"], ["6,000円", "6,000円"], ["7,000円", "7,000円"], ["8,000円", "8,000円"], ["9,000円", "9,000円"], ["10,000円以上"]], include_blank: "選択して下さい" %>
+                 ～
+                <%= f.select :price_upper_limit, [["999円以下"], ["1,999円", "1,999円"], ["2,999円", "2,999円"], ["3,999円", "3,999円"], ["4,999円", "4,999円"], ["5,999円", "5,999円"], ["6,999円", "6,999円"], ["7,999円", "7,999円"], ["8,999円", "8,999円"], ["9,999円", "9,999円"], ["10,999円", "10,999円"], ["14,999円", "14,999円"], ["20,000円以上"]], include_blank: "選択して下さい" %>
+              </td>
+            </tr>
+            <tr>
+              <th><%= f.label :ホームページURL %></th>
+              <td></td>
+              <td>
+                <%= f.text_field :hp_url, autofocus: true, autocomplete: "hp_url", placeholder: "https://..."  %>
+              </td>
+            </tr>
+            <tr>
+              <th><%= f.label :予約方法 %></th>
+              <td></td>
+              <td>
+                <%= f.select :reservation_method, [["予約不可", "予約不可"], ["電話予約", "電話予約"], ["ネット予約", "ネット予約"]], include_blank: "選択して下さい" %>
+              </td>
+            </tr>
+            <tr>
+              <th><%= f.label :メールアドレス %></th>
+              <td></td>
+              <td>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com"  %>
+              </td>
+            </tr>
+            <tr>
+              <th><%= f.label :電話番号（ハイフンなし）%></th>
+              <td></td>
+              <td>
+                <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number", placeholder: "0000000000"  %>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td>
+                <button type="submit" class="btn btn-success mb-5">更新</button>
+              </td>
+            </tr>
+          </table>
+        <% end %>
+    </div>
+  </div>
+</div>

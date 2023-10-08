@@ -1,26 +1,43 @@
-<h2>Log in</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 pt-3 offset-md-1">
+      <h5 class="sign_up mb-3">飲食店 ログイン</h5>
+        <%= form_for(resource, as: resource_name, url: restaurant_session_path) do |f| %>
+        <%= render "public/shared/error_messages", resource: resource %>
+          <table>
+            <tr>
+              <th><%= f.label :メールアドレス %></th>
+              <td></td>
+              <td>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com"  %>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <%= f.label :パスワード %>
+                <% if @minimum_password_length %>
+                  (<%= @minimum_password_length %> 文字以上）
+                <% end %>
+              </th>
+              <td></td>
+              <td>
+                <%= f.password_field :password, autocomplete: "new-password" %>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td>
+                <button type="submit" class="btn btn-success mb-5">ログイン</button>
+              </td>
+            </tr>
+          </table>
+        <% end %>
 
-<%= form_for(resource, as: resource_name, url: restaurant_session_path) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+        <h5 class="sign_in mb-3">会員登録はこちらから</h5>
+        <p>
+          <%= link_to "会員登録", new_restaurant_registration_path %>
+        </p>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "restaurant_info/shared/links" %>
+</div>

@@ -21,11 +21,11 @@ class RestaurantInfo::SessionsController < Devise::SessionsController
   protected
 
   def after_sign_up_path_for(resource)
-    restaurant_info_top_path
+    restaurant_info_restaurants_mypage_path
   end
 
   def after_sign_in_path_for(resource)
-    restaurant_info_top_path
+    restaurant_info_restaurants_mypage_path
   end
 
   def after_sign_out_path_for(resource)

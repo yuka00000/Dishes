@@ -34,8 +34,8 @@ Rails.application.routes.draw do
 
   namespace :restaurant_info do
     get 'top' => 'homes#top'
-    get 'restaurant/mypage' => 'restaurants#show'
-    resources :restaurant, only: [:show, :edit, :update]
+    get 'restaurants/mypage' => 'restaurants#show'
+    resources :restaurants, only: [:show, :edit, :update]
   end
 
   scope module: :public do
