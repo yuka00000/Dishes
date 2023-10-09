@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-md-10 pt-3 offset-md-1">
-      <h5>投稿編集</h5>
-      <%= form_with model: @user, url: users_mypage_path do |f| %>
+      <h5>プロフィール編集</h5>
+      <%= form_with model: @user, url: user_path do |f| %>
         <table>
             <tr>
               <th><%= f.label :ユーザー名 %></label></th>
@@ -14,29 +14,23 @@
               <tr>
               <th><%= f.label :自己紹介 %></th>
               <td></td>
-              <td>
-
-              </td>
+              <td><%= f.text_field :introduction %></td>
             </tr>
             <tr>
               <th><%= f.label :メールアドレス %></th>
               <td></td>
-              <td>
-                <%= f.text_area :email %>
-              </td>
+              <td><%= f.email_field :email %></td>
             </tr>
             <tr>
               <th><%= f.label :電話番号 %></th>
               <td></td>
-              <td>
-                <%= f.text_area :phone_number %>
-              </td>
+              <td><%= f.text_field :phone_number %></td>
             </tr>
             <tr>
               <td></td>
               <td></td>
               <td>
-                <button type="submit" class="btn btn-success mb-5">更新</button>
+                <button type="submit" class="btn btn-secondary mb-5">更新</button>
               </td>
             </tr>
           </table>

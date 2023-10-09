@@ -1,29 +1,41 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-8 pt-3 offset-md-1">
-      <h4 class="pb-3"><%= @user.user_name %>さんのマイページ</h4>
-      <h5>ユーザー情報</h5>
-      <table class="table table-bordered">
+    <% if @user == current_user %>
+      <h4 class="pt-3"><%= @user.user_name %>さんのマイページ</h4>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="col-md-1 pt-4 mr-3">
+      <%= image_tag @user.get_user_image(100, 100) %>
+    </div>
+    <div class="col-md-4 pt-4">
+      <h5>プロフィール</h5>
+      <table class="table">
         <tr>
-          <th class="table-secondary", style="width: 30%">ユーザー名</th>
-          <td style="width: 60%"><%= @user.user_name %></td>
+          <th>ユーザー名</th>
+          <td><%= @user.user_name %></td>
         </tr>
         <tr>
-          <th class="table-secondary">自己紹介</th>
-          <td></td>
+          <th>自己紹介</th>
+          <td><%= @user.introduction %></td>
         </tr>
-        <tr>
-          <th class="table-secondary">メールアドレス</th>
-          <td><%= @user.email %></td>
-        </tr>
-        <tr>
-          <th class="table-secondary">電話番号</th>
-          <td><%= @user.phone_number %></td>
-        </tr>
+        <% if @user == current_user %>
+          <tr>
+            <th>メールアドレス</th>
+            <td><%= @user.email %></td>
+          </tr>
+          <tr>
+            <th>電話番号</th>
+            <td><%= @user.phone_number %></td>
+          </tr>
+        <% end %>
       </table>
-      <%= link_to '編集する', edit_user_path(@user), class: "btn btn-success mb-3" %>
-
-      <h5 class="pt-3">投稿一覧</h5>
+      <% if @user == current_user %>
+        <%= link_to '編集する', edit_user_path(@user), class: "btn btn-secondary mb-3" %>
+      <% end %>
+    </div>
+    <div class="col-md-5 pt-4 offset-md-1">
+      <h5 class="pt-6">投稿一覧</h5>
       <% @user_posts.each do |user_post| %>
       <div>
         <%= link_to post_path(@user) do %>
@@ -37,7 +49,6 @@
         <p><%= user_post.body %></p>
       </div>
       <% end %>
-      <%= link_to '編集する', users_mypage_path(@user.id), class: "btn btn-success mb-3" %>
     </div>
   </div>
 </div>

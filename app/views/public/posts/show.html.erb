@@ -1,1 +1,17 @@
-a
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 pt-3 offset-md-1">
+      <h5 class="pt-3">投稿詳細</h5>
+      <div>
+        <%= image_tag @post.get_post_image(100,100) %>
+        <p><%= link_to @post.user.user_name, user_path(@post.user_id) %></p>
+        <p><%= @post.title %></p>
+        <p><%= @post.body %></p>
+        <% if @post.user_id == current_user.id %>
+          <%= link_to '編集する', edit_post_path(@post), class: "btn btn-secondary mb-3" %>
+        <% end %>
+        <%= link_to "戻る", posts_path, class: "btn btn-secondary mb-3" %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,49 +1,24 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-10 pt-3 offset-md-1">
+    <div class="col-md-10 pt-3 offset-md-3">
       <h4>投稿フォーム</h4>
-      <%= form_with model: @post do |f| %>
-        <h5>画像</h5>
-        <%= f.file_field :post_image, placeholder: "プロフィール画像", accept: "image/*" %>
-        <h5>タイトル</h5>
-        <%= f.text_field :title %>
-        <h5>内容</h5>
-        <%= f.text_area :body %>
-        <h5>お店の名前</h5>
-        <!--<input type="text" autocomplete="on" list="testlist">-->
-
-        <select name="post[restaurant_id]">
-          <% Restaurant.all.each do |restaurant| %>
-            <option value="<%= restaurant.id %>"><%= restaurant.name %></option>
+        <div class="search pb-4">
+          <%= form_with model: @post do |f| %>
+            <h5 class="image pt-2">画像</h5>
+            <%= f.file_field :post_image, placeholder: "プロフィール画像", accept: "image/*" %>
+            <h5 class="title pt-2">タイトル</h5>
+            <%= f.text_field :title %>
+            <h5 class="body pt-2">本文</h5>
+            <%= f.text_area :body %>
+            <h5 class="restaurant pt-2">お店の名前</h5>
+            <select name="post[restaurant_id]">
+              <% Restaurant.all.each do |restaurant| %>
+                <option value="<%= restaurant.id %>"><%= restaurant.name %></option>
+              <% end %>
+            </select></br>
+            <%= f.submit '投稿する', class: 'btn btn-secondary mt-3' %>
           <% end %>
-        </select>
-        <datalist id="testlist"></datalist>
-        <%= f.submit '投稿する', class: 'btn btn-secondary' %>
-      <% end %>
+        </div>
     </div>
   </div>
 </div>
-
-
-
-<script>
-
-//オートコンプリートの中を作成
-<%= Restaurant.all.pluck(:name) %>
-let arr = ['java', 'vue.js', 'react.js', 'C#', 'javascript'];
-
-//datalistにオートコンプリート値を設定
-for(let item of arr){
-
-    // optionタグを生成
-    let option = document.createElement("option");
-
-    // 値に配列の要素を代入
-    option.value = item;
-
-    // datalist要素の子要素として生成
-    document.getElementById("testlist").appendChild(option);
-
-}
-
-</script>

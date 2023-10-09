@@ -1,8 +1,9 @@
 class Public::UsersController < ApplicationController
 
   def show
-    @user = current_user
-    @user_posts= Post.where(user_id: @user.id)
+    @user = User.find(params[:id])
+    @current_user = current_user
+    @user_posts= Post.where(user_id: params[:id])
   end
   
   def edit
