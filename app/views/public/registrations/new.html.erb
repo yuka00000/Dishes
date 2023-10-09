@@ -28,6 +28,13 @@
               </td>
             </tr>
             <tr>
+              <th><%= f.label :ユーザー名（表示名） %></th>
+              <td></td>
+              <td>
+                <%= f.text_field :user_name, autofocus: true, autocomplete: "user_name"  %>
+              </td>
+            </tr>
+            <tr>
               <th><%= f.label :メールアドレス %></th>
               <td></td>
               <td>

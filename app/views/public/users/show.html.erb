@@ -1,19 +1,43 @@
-<!-- ユーザーの詳細 -->
-<div>
-  <h3><%= @user.last_name %></h3>
-  <%= image_tag @user.get_user_image(100,100) %>
-</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 pt-3 offset-md-1">
+      <h4 class="pb-3"><%= @user.user_name %>さんのマイページ</h4>
+      <h5>ユーザー情報</h5>
+      <table class="table table-bordered">
+        <tr>
+          <th class="table-secondary", style="width: 30%">ユーザー名</th>
+          <td style="width: 60%"><%= @user.user_name %></td>
+        </tr>
+        <tr>
+          <th class="table-secondary">自己紹介</th>
+          <td></td>
+        </tr>
+        <tr>
+          <th class="table-secondary">メールアドレス</th>
+          <td><%= @user.email %></td>
+        </tr>
+        <tr>
+          <th class="table-secondary">電話番号</th>
+          <td><%= @user.phone_number %></td>
+        </tr>
+      </table>
+      <%= link_to '編集する', edit_user_path(@user), class: "btn btn-success mb-3" %>
 
-<!-- ユーザーの投稿一覧 -->
-
-<% @posts.each do |post| %>
-<div>
-  <%= link_to post_path(post.id) do %>
-    <%= image_tag post.get_image %>
-  <% end %>
-  <p>投稿ユーザー画像：<%= image_tag post_image.user.get_user_image(100,100) %></p>
-  <p>ショップ名：<%= post_image.shop_name %></p>
-  <p>説明：<%= post_image.caption %></p>
-  <p>ユーザーネーム：<%= user_image.user.last_name %></p>
+      <h5 class="pt-3">投稿一覧</h5>
+      <% @user_posts.each do |user_post| %>
+      <div>
+        <%= link_to post_path(@user) do %>
+          <%= image_tag user_post.get_post_image(100,100) %>
+        <% end %>
+        <p>
+          <%= link_to post_path(user_post) do %>
+            <%= user_post.title %>
+          <% end %>
+        </p>
+        <p><%= user_post.body %></p>
+      </div>
+      <% end %>
+      <%= link_to '編集する', users_mypage_path(@user.id), class: "btn btn-success mb-3" %>
+    </div>
+  </div>
 </div>
-<% end %>

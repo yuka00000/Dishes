@@ -10,7 +10,13 @@
         <h5>内容</h5>
         <%= f.text_area :body %>
         <h5>お店の名前</h5>
-        <input type="text" autocomplete="on" list="testlist">
+        <!--<input type="text" autocomplete="on" list="testlist">-->
+
+        <select name="post[restaurant_id]">
+          <% Restaurant.all.each do |restaurant| %>
+            <option value="<%= restaurant.id %>"><%= restaurant.name %></option>
+          <% end %>
+        </select>
         <datalist id="testlist"></datalist>
         <%= f.submit '投稿する', class: 'btn btn-secondary' %>
       <% end %>
@@ -23,8 +29,8 @@
 <script>
 
 //オートコンプリートの中を作成
-<% restaurants = Restaurant.all.pluck(:name) %>
-let arr = restaurants;
+<%= Restaurant.all.pluck(:name) %>
+let arr = ['java', 'vue.js', 'react.js', 'C#', 'javascript'];
 
 //datalistにオートコンプリート値を設定
 for(let item of arr){

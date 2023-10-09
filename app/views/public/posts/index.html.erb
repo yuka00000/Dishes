@@ -3,27 +3,19 @@
     <div class="col-md-8 pt-3 offset-md-1">
       <h2>みんなの投稿</h2>
       <table class="table table-hover">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Title</th>
-            <th>Opinion</th>
-            <th colspan="3"></th>
-          </tr>
-        </thead>
-
+    </div>
         <tbody>
+          <div class="col-3">
           <% @posts.each do |post| %>
-          <tr>
-            <td>
-              <%= link_to post_path(post) do %>
-                <%= image_tag post.post_image(80, 80) %>
-              <% end %>
-            </td>
-            <td><%= link_to post.title, post_path(post) %></td>
-            <td><%= post.body %></td>
-          </tr>
+            <div class="item-image">
+                <%= link_to post_path(post) do %>
+                  <%= image_tag post.get_post_image(80, 80) %>
+                <% end %></br>
+                <%= post.user.user_name %></br>
+                <%= link_to post.title, post_path(post) %>
+            </div>
           <% end %>
+          </div>
         </tbody>
       </table>
     </div>

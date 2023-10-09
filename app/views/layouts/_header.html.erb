@@ -16,6 +16,12 @@
               <%= link_to "マイページ", users_mypage_path, class: 'nav-link text-light' %>
             </li>
             <li>
+              <%= link_to "新規投稿", new_post_path, class: 'nav-link text-light' %>
+            </li>
+            <li>
+              <%= link_to "みんなの投稿", posts_path, class: 'nav-link text-light' %>
+            </li>
+            <li>
               <%= link_to "ログアウト", destroy_user_session_path, class: 'nav-link text-light', method: :delete %>
             </li>
 
