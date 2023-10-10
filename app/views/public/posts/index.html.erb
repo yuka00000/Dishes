@@ -4,16 +4,21 @@
       <h2>みんなの投稿</h2>
       <table class="table table-hover">
         <tbody>
-          <div class="col-3">
-          <% @posts.each do |post| %>
-            <div class="item-image">
-                <%= link_to post_path(post) do %>
-                  <%= image_tag post.get_post_image(80, 80) %>
-                <% end %></br>
-                <%=  link_to post.user.user_name, user_path(post.user_id) %></br>
-                <%= link_to post.title, post_path(post) %>
+          <div class = "container pt-5">
+            <div class = "row pt-2">
+              <% @posts.each do |post| %>
+              <div class="col-3">
+                <div class="item-image pb-2">
+                    <%= link_to post_path(post) do %>
+                      <%= image_tag post.get_post_image(100, 100) %>
+                    <% end %></br>
+                    <%=  link_to post.user.user_name, user_path(post.user_id)%></br>
+                    <%= link_to post.title, post_path(post)%>
+                </div>
+              </div>
+              <% end %>
             </div>
-          <% end %>
+          </div>
         </tbody>
       </table>
     </div>

@@ -1,39 +1,24 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-10 pt-3 offset-md-1">
+    <div class="col-md-10 pt-3 offset-md-3">
       <h5>投稿編集</h5>
-      <%= form_with model: @post, url: post_path do |f| %>
-        <table>
-            <tr>
-              <th><%= f.label :画像 %></label></th>
-              <td></td>
-              <td>
-                <%= f.file_field :post_image, accept: "image/*" %><br>
-              </td>
-              <tr>
-              <tr>
-              <th><%= f.label :タイトル %></th>
-              <td></td>
-              <td>
-                <%= f.text_field :title %>
-              </td>
-            </tr>
-            <tr>
-              <th><%= f.label :内容 %></th>
-              <td></td>
-              <td>
-                <%= f.text_area :body %>
-              </td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td>
-                <button type="submit" class="btn btn-secondary mb-5">更新</button>
-              </td>
-            </tr>
-          </table>
+        <div class="search pb-4">
+        <%= form_with model: @post do |f| %>
+          <h5 class="image pt-2">画像</h5>
+          <%= f.file_field :post_image, placeholder: "プロフィール画像", accept: "image/*" %>
+          <h5 class="title pt-2">タイトル</h5>
+          <%= f.text_field :title %>
+          <h5 class="body pt-2">本文</h5>
+          <%= f.text_area :body %>
+          <h5 class="restaurant pt-2">お店の名前</h5>
+          <select name="post[restaurant_id]">
+            <% Restaurant.all.each do |restaurant| %>
+              <option value="<%= restaurant.id %>"><%= restaurant.name %></option>
+            <% end %>
+          </select></br>
+          <%= f.submit '更新', class: 'btn btn-secondary mt-3 mb-5' %>
         <% end %>
+        </div>
     </div>
   </div>
 </div>

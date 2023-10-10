@@ -1,16 +1,16 @@
 <div class="container">
   <div class="row">
     <% if @user == current_user %>
-      <h4 class="pt-3"><%= @user.user_name %>さんのマイページ</h4>
+      <h4 class="pt-4"><%= @user.user_name %>さんのマイページ</h4>
     <% end %>
   </div>
   <div class="row">
-    <div class="col-md-1 pt-4 mr-3">
+    <div class="col-md-1 pt-4 mr-4">
       <%= image_tag @user.get_user_image(100, 100) %>
     </div>
-    <div class="col-md-4 pt-4">
+    <div class="col-md-3 pt-4">
       <h5>プロフィール</h5>
-      <table class="table">
+      <table class="table pt-3">
         <tr>
           <th>ユーザー名</th>
           <td><%= @user.user_name %></td>
@@ -34,21 +34,26 @@
         <%= link_to '編集する', edit_user_path(@user), class: "btn btn-secondary mb-3" %>
       <% end %>
     </div>
-    <div class="col-md-5 pt-4 offset-md-1">
+    <div class="col-md-6 pt-4 offset-md-1">
       <h5 class="pt-6">投稿一覧</h5>
-      <% @user_posts.each do |user_post| %>
-      <div>
-        <%= link_to post_path(@user) do %>
-          <%= image_tag user_post.get_post_image(100,100) %>
-        <% end %>
-        <p>
-          <%= link_to post_path(user_post) do %>
-            <%= user_post.title %>
+      <div class = ".container">
+        <div class = "row">
+          <% @user_posts.each do |user_post| %>
+          <div class="col-3 p-0 pb-3">
+            <div>
+              <%= link_to post_path(@user) do %>
+                <%= image_tag user_post.get_post_image(100,100) %>
+              <% end %>
+              <p>
+                <%= link_to post_path(user_post) do %>
+                  <%= user_post.title %>
+                <% end %>
+              </p>
+            </div>
+          </div>
           <% end %>
-        </p>
-        <p><%= user_post.body %></p>
-      </div>
-      <% end %>
+          </div>
+        </div>
     </div>
   </div>
 </div>

@@ -4,7 +4,6 @@ class RestaurantInfo::RestaurantsController < ApplicationController
   end
 
   def edit
-    @restaurant_new = Restaurant.new
     @restaurant = Restaurant.find(params[:id])
     unless @restaurant == current_restaurant
       redirect_to restaurant_info_top_path
@@ -29,7 +28,7 @@ class RestaurantInfo::RestaurantsController < ApplicationController
   private
 
   def restaurant_params
-  params.require(:restaurant).permit(:name, :explanation, :post_code, :address, :price_lower_limit, :price_upper_limit, :hp_url, :reservation_method, :email, :phone_number, :restaurant_image)
-end
+    params.require(:restaurant).permit(:name, :explanation, :post_code, :address, :price_lower_limit, :price_upper_limit, :hp_url, :reservation_method, :email, :phone_number, :restaurant_image)
+  end
 
 end

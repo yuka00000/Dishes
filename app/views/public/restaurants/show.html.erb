@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-7 pt-3 offset-md-3">
+        <%= image_tag @post.restaurant.get_restaurant_image(100, 100) %>
+    </div>
+      <table class="tabled offset-md-3">
+        <tr>
+          <th>店名</th>
+          <td><%= @post.restaurant.name %> </td>
+        </tr>
+        <tr>
+          <th>紹介文</th>
+          <td><%= @post.restaurant.explanation %></td>
+        </tr>
+        <tr>
+          <th>所在地</th>
+          <td>〒<%= @post.restaurant.post_code %> <%= @post.restaurant.address %></td>
+        </tr>
+        <tr>
+          <th>価格帯</th>
+          <td><%= @post.restaurant.price_lower_limit %> ～ <%= @post.restaurant.price_upper_limit %></td>
+        </tr>
+        <tr>
+          <th>ホームページURL</th>
+          <td><%= @post.restaurant.hp_url %></td>
+        </tr>
+        <tr>
+          <th>予約方法 </th>
+          <td><%= @post.restaurant.reservation_method %></td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td><%= @post.restaurant.phone_number %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス </th>
+          <td><%= @post.restaurant.email %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
