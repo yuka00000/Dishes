@@ -14,6 +14,8 @@ class User < ApplicationRecord
   #find_or_create_by!:指定した条件でデータを検索し、存在すればそのデータを返し、存在しなければ新しいデータを作成するメソッド
 
   has_many :posts, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :post_comments, dependent: :destroy
 
   has_one_attached :user_image
 

@@ -7,7 +7,6 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
-    #resources :users, only: [:edit, :update]
   end
 
   # 飲食店用
@@ -15,22 +14,6 @@ Rails.application.routes.draw do
     registrations: "restaurant_info/registrations",
     sessions: 'restaurant_info/sessions'
   }
-
-  #namespace :restaurant_info do
-    # devise_scope :restaurant do
-      # get 'restaurant_info/sign_up' => 'restaurant_info/registrations#new', as: :new_restaurant_info_registration
-      # post 'restaurant_info/sign_up' => 'restaurant_info/registrations#create', as: :restaurant_info_registration
-      # get 'restaurant_info/sign_in' => 'restaurant_info/sessions#new', as: :restaurant_info_session
-      # post 'restaurant_info/sign_in' => 'restaurant_info/sessions#create'
-      # delete 'restaurant_info/sign_out' => 'restaurant_info/sessions#destroy', as: :destroy_restaurant_info_session
-
-      # namespace :restaurant do
-      #   get 'top' => 'homes#top'
-      #   get 'restaurant/mypage' => 'restaurants#show'
-      #   resources :restaurant, only: [:show, :edit, :update]
-      # end
-    # end
-  #end
 
   namespace :restaurant_info do
     get 'top' => 'homes#top'
@@ -40,9 +23,12 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: "homes#top"
-    resources :posts
     resources :users, only: [:show, :edit, :update]
     resources :restaurants, only: [:show]
+    resources :posts do
+      resource :favorites, only: [:create, :destroy]
+      resources :post_comments, only: [:create]
+    end
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

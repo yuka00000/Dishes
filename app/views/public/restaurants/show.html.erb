@@ -1,12 +1,13 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-7 pt-3 offset-md-3">
-        <%= image_tag @post.restaurant.get_restaurant_image(100, 100) %>
-    </div>
-      <table class="tabled offset-md-3">
+    <div class="col-md-7 pt-3 offset-md-1 mt-3">
+      <%= image_tag @post.restaurant.get_restaurant_image(100, 100) %>
+      <table class="table offset-md-1 mb-5">
         <tr>
-          <th>店名</th>
-          <td><%= @post.restaurant.name %> </td>
+          <th style="width:10%"></th>
+          <td style="width:30%">
+            <h3><%= @post.restaurant.name %></h3>
+          </td>
         </tr>
         <tr>
           <th>紹介文</th>
