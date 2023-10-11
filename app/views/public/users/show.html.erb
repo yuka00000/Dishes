@@ -1,14 +1,14 @@
 <div class="container">
-  <% if @user == current_user %>
-    <h4 class="pt-4"><%= @user.user_name %>さんのマイページ</h4>
-  <% end %>
-  
   <div class="row">
-    <div class="col-md-1 pt-4 mr-4">
+    <% if @user == current_user %>
+      <h4 class="pt-4 offset-md-2"><%= @user.user_name %>さんのマイページ</h4>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="col-md-1 pt-4 mr-4 offset-md-2">
       <%= image_tag @user.get_user_image(100, 100) %>
     </div>
     <div class="col-md-3 pt-4">
-      <h5>プロフィール</h5>
       <table class="table pt-3">
         <tr>
           <th>ユーザー名</th>
@@ -28,6 +28,7 @@
             <td><%= @user.phone_number %></td>
           </tr>
         <% end %>
+        <%= render "public/relationships/follow", user: @user %>
       </table>
       <% if @user == current_user %>
         <%= link_to '編集する', edit_user_path(@user), class: "btn btn-secondary mb-3" %>
@@ -36,8 +37,8 @@
   </div>
   <div class = "row">
     <div class="col-md-6 pt-4 offset-md-1">
-      <h5 class="pt-6">投稿一覧</h5>
-      <div class="row pb-3">
+      <h5 class="pt-6 offset-md-2">投稿一覧</h5>
+      <div class="row pb-3 offset-md-2">
         <%= render 'public/posts/post', posts: @posts %>
       </div>
     </div>
