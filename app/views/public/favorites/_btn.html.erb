@@ -1,13 +1,13 @@
 <% if post.favorited_by?(current_user) %>
   <p>
-    <%= link_to post_favorites_path(post), method: :delete do %>
-      <i class="far fa-heart"></i><%= post.favorites.count %>
+    <%= link_to post_favorites_path(post), style:"color:black;", method: :delete do %>
+      <i class="fas fa-heart" style="color: #db1f57;"></i><%= post.favorites.count %>
     <% end %>
   </p>
 <% else %>
   <p>
-    <%= link_to post_favorites_path(post), method: :post do %>
-      ♡<%= post.favorites.count %>
+    <%= link_to post_favorites_path(post), style:"color:black;", method: :post do %>
+      <i class="far fa-heart"></i><%= post.favorites.count %>
     <% end %>
   </p>
 <% end %>
