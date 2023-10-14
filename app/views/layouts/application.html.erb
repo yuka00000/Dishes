@@ -12,15 +12,17 @@
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
-    <main class="row">
-      <div class="col-md-2" style="background-color:#756560;">
-        <%= render 'layouts/sidebar' %>
-      </div>
-      <div class="col-md-10">
-      <%= yield %>
-      </div>
-    </main>
-    <%= render 'layouts/footer' %>
+    <div class="wrapper">
+      <%= render 'layouts/header' %>
+      <main class="page-body row">
+        <div class="col-md-2" style="background-color:#756560;">
+          <%= render 'layouts/sidebar' %>
+        </div>
+        <div class="col-md-10 p-0">
+        <%= yield %>
+        </div>
+      </main>
+      <%= render 'layouts/footer' %>
+    </div>
   </body>
 </html>

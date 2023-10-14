@@ -16,9 +16,11 @@
               <% end %>
             </p>
             <span>
-              <%= link_to user_path(post.user_id), style:"color:black;" do %>
-                <i class="fas fa-user"></i><%= link_to post.user.user_name %>
+              <%= link_to post_path(post.id), style:"color:black;" do %>
+                <i class="fas fa-user"></i>
+                <%= post.user.user_name %>
               <% end %>
+            </span>
             <div class="d-flex">
               <span class="mr-3">
                 <%= link_to post_path(post.id), style:"color:black;" do %>

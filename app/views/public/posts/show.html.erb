@@ -1,52 +1,68 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-8">
-      <div class="card w-50 mt-2 shadow pt-3 offset-md-4">
-        <%= image_tag @post.get_post_image %>
-        <div class="card-body">
-          <div class="row">
-            <div class="col-2">
-               <%= image_tag @post.user.get_user_image(40,40), class:"mt-3 rounded-circle"; %>
+  <div class="p-3" style="width: 350px;">
+    <div class="card shadow">
+      <%= image_tag @post.get_post_image, class:"card-img-top"; %>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-2 p-0 pl-2">
+           <%= image_tag @post.user.get_user_image(50,50), class:"mt-3 rounded-circle"; %>
+          </div>
+          <div class="col-9 pl-4">
+            <p class="card-title">
+              <strong><i class="far fa-flag"></i><span> <%= @post.title %></span></strong>
+            </p>
+            <p class="card-text">
+              <%= @post.body %>
+            </p>
+            <p class="hashtag">
+              <%= render_with_hashtags(@post.hashbody) %>
+            </p>
+            <%= link_to restaurant_path, style:"color:black;" do %>
+              <i class="fas fa-map-marker-alt"></i>
+              <%= @post.restaurant.name %></p>
+            <% end %>
+            <%= link_to user_path(@post.user_id), style:"color:black;" do %>
+              <span><i class="fas fa-user"></i>
+              <%= @post.user.user_name  %>
+            <% end %>
+            <div class="d-flex">
+              <span class="mr-3">
+                <%= link_to post_path(@post.id), style:"color:black;" do %>
+                  <i class="far fa-comment"></i>
+                  <%= @post.post_comments.count %>
+                <% end %>
+              </span>
+              <span>
+                <%= render 'public/favorites/btn', post: @post %>
+              </span>
             </div>
-            <div class="col-10">
-              <p class="card-title"><strong><i class="far fa-flag"></i><span> <%= @post.title %></span></strong></p>
-              <p class="card-text"><%= @post.body %></p>
-              <div class="category">
-                <%= render_with_hashtags(@post.hashbody) %>
-              </div>
-              <i class="fas fa-map-marker-alt"></i> <%= link_to @post.restaurant.name, restaurant_path %></p>
-              <span><i class="fas fa-user"></i> <%= link_to @post.user.user_name, user_path(@post.user_id) %>
-              <%= render 'public/favorites/btn', post: @post %>
-              <%= link_to "#{@post.post_comments.count}コメント", class:"text-dark" %></br>
 
               <% if @post.user_id == current_user.id %>
                 <%= link_to '編集する', edit_post_path(@post), class: "btn btn-secondary mb-3" %>
-              <% end %>
-
-              <% if @post.user_id == current_user.id %>
                 <%= link_to '削除する', post_path(@post), class: "btn btn-secondary mb-3", method: :delete, "data-confirm" => "本当に消しますか？"  %>
               <% end %>
 
-              <%= link_to "戻る", posts_path, class: "btn btn-secondary mb-3" %>
-            </div>
+            <%= link_to "戻る", posts_path, class: "btn btn-secondary mb-3" %>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-6 offset-md-4">
-          <div class="comment mt-3">
-            <%= form_with model: [@post, @post_comment] do |f| %>
-              <%= f.text_area :comment, placeholder: "コメントする" %>
-              <%= f.submit "送信する" %>
-            <% end %>
-            <% @post.post_comments.each do |post_comment| %>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="comment mt-3">
+          <%= form_with model: [@post, @post_comment] do |f| %>
+            <%= f.text_area :comment, placeholder: "コメントする" %>
+            <%= f.submit "送信する" %>
+          <% end %>
+          <% @post.post_comments.each do |post_comment| %>
+            <div class="card-body">
               <div class="row">
-                <div class="col-2">
-                  <%= image_tag post_comment.user.get_user_image(40,40), class:"mt-3 rounded-circle"; %>
+                <div class="col-2 p-0 ml-2">
+                <%= image_tag post_comment.user.get_user_image(40,40), class:"mt-1 rounded-circle"; %>
                 </div>
-                <div class="col-10">
+                <div class="col-9">
                   <%= post_comment.user.user_name %>
-                  <p>
+                  <p class="m-0">
                     <%= post_comment.comment %>
                   </p>
                   <div class="strftime", style="font-size:small; text-align:right; padding-bottom: 20px">
@@ -57,8 +73,8 @@
                   </div>
                 </div>
               </div>
-            <% end %>
-          </div>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>

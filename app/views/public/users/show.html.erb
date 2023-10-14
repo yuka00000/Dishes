@@ -35,12 +35,10 @@
       <% end %>
     </div>
   </div>
-  <div class = "row">
-    <div class="col-md-6 pt-4 offset-md-1">
-      <h5 class="pt-6 offset-md-2">投稿一覧</h5>
-      <div class="row pb-3 offset-md-2">
-        <%= render 'public/posts/post', posts: @posts %>
-      </div>
+  <div class="card-list py-5">
+    <h5>投稿一覧</h5>
+    <div class="row">
+      <%= render 'public/posts/post', posts: @posts %>
     </div>
   </div>
 </div>

@@ -27,7 +27,6 @@ class Public::PostsController < ApplicationController
 
   def edit
     is_matching_login_user
-    #@user = current_user
     @post = Post.find(params[:id])
   end
 

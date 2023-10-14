@@ -16,10 +16,8 @@
                 <option value="<%= restaurant.id %>"><%= restaurant.name %></option>
               <% end %>
             </select></br>
-            <div class="hash_tag">
-              <p>ハッシュタグ入力欄</p>
-              <%= f.text_area :hashbody, size:"55x3" %></br>
-            </div>
+            <h5 class="hash_tag pt-2">ハッシュタグ入力欄</h5>
+            <%= f.text_area :hashbody, size:"40x2" %></br>
             <%= f.submit '投稿する', class: 'btn btn-secondary mt-3' %>
           <% end %>
         </div>
