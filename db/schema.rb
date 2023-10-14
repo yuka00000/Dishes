@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_10_11_164253) do
+ActiveRecord::Schema.define(version: 2023_10_14_080512) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -47,12 +47,28 @@ ActiveRecord::Schema.define(version: 2023_10_11_164253) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "hashtags", force: :cascade do |t|
+    t.string "hashname"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["hashname"], name: "index_hashtags_on_hashname", unique: true
+  end
+
   create_table "post_comments", force: :cascade do |t|
     t.text "comment"
     t.integer "user_id"
     t.integer "post_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "post_hashtag_relations", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "hashtag_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["hashtag_id"], name: "index_post_hashtag_relations_on_hashtag_id"
+    t.index ["post_id"], name: "index_post_hashtag_relations_on_post_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -62,6 +78,7 @@ ActiveRecord::Schema.define(version: 2023_10_11_164253) do
     t.integer "restaurant_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "hashbody"
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -113,4 +130,6 @@ ActiveRecord::Schema.define(version: 2023_10_11_164253) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "post_hashtag_relations", "hashtags"
+  add_foreign_key "post_hashtag_relations", "posts"
 end

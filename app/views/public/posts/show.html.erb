@@ -11,6 +11,9 @@
             <div class="col-10">
               <p class="card-title"><strong><i class="far fa-flag"></i><span> <%= @post.title %></span></strong></p>
               <p class="card-text"><%= @post.body %></p>
+              <div class="category">
+                <%= render_with_hashtags(@post.hashbody) %>
+              </div>
               <i class="fas fa-map-marker-alt"></i> <%= link_to @post.restaurant.name, restaurant_path %></p>
               <span><i class="fas fa-user"></i> <%= link_to @post.user.user_name, user_path(@post.user_id) %>
               <%= render 'public/favorites/btn', post: @post %>

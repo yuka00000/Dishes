@@ -8,7 +8,11 @@ class User < ApplicationRecord
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
       user.last_name = "ゲスト"
+      user.first_name = "ゲスト"
       user.last_name_kana = "ゲスト"
+      user.first_name_kana = "ゲスト"
+      user.user_name = "ゲスト"
+      user.phone_number = "ゲスト"
     end
   end
   #find_or_create_by!:指定した条件でデータを検索し、存在すればそのデータを返し、存在しなければ新しいデータを作成するメソッド
@@ -16,7 +20,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
-  
+
   # フォローをした、されたの関係
   has_many :followers, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :followeds, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
@@ -34,8 +38,8 @@ class User < ApplicationRecord
   #フォローしていればtrueを返す
   def following?(user)
     following_users.include?(user)
-  end	
-  
+  end
+
   # 検索方法分岐
   def self.looks(search, word)
     if search == "perfect_match"

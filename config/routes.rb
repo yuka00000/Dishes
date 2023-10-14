@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get "search" => "searches#search"
+    get '/post/hashtag/:name' => 'posts#hashtag'
+    get '/post/hashtag' => 'posts#hashtag'
     resources :users, only: [:show, :edit, :update] do
       member do
         get :follows, :followers

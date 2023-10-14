@@ -9,12 +9,10 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
 
-
     if @post.save
-      flash[:notice] = "You have created book successfully."
       redirect_to posts_path
     else
-      render :index
+      render new
     end
   end
 
@@ -32,7 +30,7 @@ class Public::PostsController < ApplicationController
     #@user = current_user
     @post = Post.find(params[:id])
   end
-  
+
   def update
     is_matching_login_user
     @post = Post.find(params[:id])
@@ -44,15 +42,22 @@ class Public::PostsController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
     redirect_to posts_path
   end
+  
+  def hashtag
+    @user = current_user
+    @tag = Hashtag.find_by(hashname: params[:name])
+    @posts = @tag.posts
+    pp "@post------------------------------#{@posts.inspect}"
+  end
 
   private
-  
+
   def is_matching_login_user
     post = Post.find(params[:id])
     unless post.user.id == current_user.id
@@ -61,6 +66,6 @@ class Public::PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :body, :post_image, :user_id, :restaurant_id)
+    params.require(:post).permit(:title, :body, :post_image, :user_id, :restaurant_id, :hashbody, post_image_images: [], hashtag_ids: [])
   end
 end

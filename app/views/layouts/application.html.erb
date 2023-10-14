@@ -14,10 +14,10 @@
   <body>
     <%= render 'layouts/header' %>
     <main class="row">
-      <div class="col-md-3">
-        <%= render 'public/searches/search' %>
+      <div class="col-md-2" style="background-color:#756560;">
+        <%= render 'layouts/sidebar' %>
       </div>
-      <div class="col-md-9">
+      <div class="col-md-10">
       <%= yield %>
       </div>
     </main>
