@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-7 pt-3 offset-md-1 mt-3">
+      <h5 class="mb-3">予約一覧</h5>
+      <table class="table mb-5">
+        <tr>
+          <th>日付</th>
+          <th>時間</th>
+          <th>レストラン名</th>
+          <th></th>
+        </tr>
+        <%= render 'public/reservations/reservation', reservations: @reservations, class:"text-dark" %>
+      </table>
+    </div>
+  </div>
+</div>

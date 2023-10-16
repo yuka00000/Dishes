@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-7 pt-3 offset-md-1 mt-3">
+      <h5 class="mb-3">予約詳細</h5>
+      <table class="table mb-5">
+        <tr>
+          <th>日付</th>
+          <td><%= @reservation.date.strftime("%Y/%m/%d") %></td>
+        </tr>
+        <tr>
+          <th>時間</th>
+          <td><%= @reservation.time.strftime("%H:%M") %></td>
+        </tr>
+        <tr>
+          <th>予約人数</th>
+          <td><%= @reservation.people_count %>人</td>
+        </tr>
+        <tr>
+          <th>お店の場所</th>
+          <td>〒<%= @reservation.restaurant.post_code %>　<%= @reservation.restaurant.address %></td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td><%= @reservation.restaurant.phone_number %></td>
+        </tr>
+        <tr>
+          <th></th>
+          <td><%= link_to '戻る', reservations_path, class: "btn btn-secondary" %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

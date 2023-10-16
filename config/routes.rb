@@ -15,30 +15,49 @@ Rails.application.routes.draw do
     sessions: 'restaurant_info/sessions'
   }
 
-  namespace :restaurant_info do
-    get 'top' => 'homes#top'
-    get 'restaurants/mypage' => 'restaurants#show'
-    resources :restaurants, only: [:show, :edit, :update]
-  end
+  # 管理者用
+  devise_for :admin, skip: [:passwords] ,controllers: {
+    registrations: "admin/registrations",
+    sessions: "admin/sessions"
+  }
 
+  # 顧客用
   scope module: :public do
     root to: "homes#top"
     get "search" => "searches#search"
     get '/post/hashtag/:name' => 'posts#hashtag'
     get '/post/hashtag' => 'posts#hashtag'
-    resources :users, only: [:show, :edit, :update] do
+    get '/reservation_complete', to: 'reservations#complete', as: 'reservation_completed'
+    resources :users, only: [:show, :edit, :update, :destroy] do
       member do
         get :follows, :followers
       end
-        resource :relationships, only: [:create, :destroy]
+      resource :relationships, only: [:create, :destroy]
     end
 
-    resources :restaurants, only: [:show]
+    resources :restaurants, only: [:show] do
+      resources :reservations, only: [:new, :create]
+    end
+    resources :reservations, only: [:show, :index]
     resources :posts do
       resource :favorites, only: [:create, :destroy]
       resources :post_comments, only: [:create, :destroy]
     end
+  end
 
+  # 飲食店用
+  namespace :restaurant_info do
+    get 'top' => 'homes#top'
+    get 'restaurants/mypage' => 'restaurants#show'
+    resources :restaurants, only: [:show, :edit, :update, :destroy] do
+      resources :reservations, only: [:show, :index]
+    end
+  end
+
+  # 管理者用
+  scope module: :admin do
+    get 'admins/top' => 'admins#top', as: 'admins_top'
+    resources :admins, only: [:index, :edit, :update, :destroy]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -3,7 +3,7 @@
     <div class="container">
       <a class="navbar-brand">
         <%= link_to root_path, class: 'nav-link text-light' do %>
-          <%= image_tag 'no_image.jpg', :size =>'50x50' %>
+          <%= image_tag 'cutlery.png', :size =>'60x60' %>
         <% end %>
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,8 +32,20 @@
             </li>
               <%= link_to "飲食店マイページ", restaurant_info_restaurants_mypage_path, class: 'nav-link text-light' %>
             </li>
-
+            <li>
+              <%= link_to '予約一覧', restaurant_info_restaurant_reservations_path(current_restaurant), class: 'nav-link text-light' %>
+            </li>
+          <% elsif admin_signed_in? %>
+            <li>
+              <%= link_to "管理者ログアウト", destroy_admin_session_path, class: 'nav-link text-light', method: :delete %>
+            </li>
           <% else %>
+            <li>
+              <%= link_to "管理者新規登録", new_admin_registration_path, class: 'nav-link text-light' %>
+            </li>
+            <li>
+              <%= link_to "管理者ログイン", new_admin_session_path, class: 'nav-link text-light' %>
+            </li>
             <li>
               <%= link_to "飲食店新規登録", new_restaurant_registration_path, class: 'nav-link text-light' %>
             </li>

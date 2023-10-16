@@ -15,6 +15,7 @@ class DeviseCreateRestaurants < ActiveRecord::Migration[6.1]
       t.string :phone_number, null: false
       t.string :post_code, null: false
       t.string :address, null: false
+      t.time :time, null: false
 
       ## Recoverable
       t.string   :reset_password_token

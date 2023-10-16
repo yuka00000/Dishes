@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 pt-3 offset-md-1">
+      <h5 class="sign_up mb-3">管理者 新規登録</h5>
+        <%= form_with model: Admin.new, url: admin_registration_path do |f| %>
+        <%= render "admin/shared/error_messages", resource: resource %>
+          <table>
+            <tr>
+              <th><%= f.label :名前 %></th>
+              <td><%= f.label :（姓） %> </td>
+              <td>
+                <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", placeholder: "山田" %>
+              </td>
+              <td><%= f.label :（名） %></td>
+              <td>
+                <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", placeholder: "太郎"  %>
+              </td>
+            </tr>
+            <tr>
+              <th><%= f.label :フリガナ %></th>
+              <td><%= f.label :（セイ） %></td>
+              <td>
+                <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana", placeholder: "ヤマダ"  %>
+              </td>
+              <td><%= f.label :（メイ） %></td>
+              <td>
+                <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana", placeholder: "タロウ"  %>
+              </td>
+            </tr>
+            <tr>
+              <th><%= f.label :メールアドレス %></th>
+              <td></td>
+              <td>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com"  %>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <%= f.label :パスワード %>
+                <% if @minimum_password_length %>
+                  (<%= @minimum_password_length %> 文字以上）
+                <% end %>
+              </th>
+              <td></td>
+              <td>
+                <%= f.password_field :password, autocomplete: "new-password" %>
+              </td>
+            </tr>
+            <tr>
+              <th><%= f.label :パスワード（確認用）%></th>
+              <td></td>
+              <td>
+                <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td>
+                <button type="submit" class="btn btn-secondary mb-5">新規登録</button>
+              </td>
+            </tr>
+          </table>
+        <% end %>
+
+        <h5 class="sign_in mb-3">会員の方はこちらから</h5>
+        <p>
+          <%= link_to "ログイン", new_admin_session_path %>
+        </p>
+    </div>
+  </div>
+</div>
+
+

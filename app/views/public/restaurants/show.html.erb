@@ -37,6 +37,14 @@
           <th>メールアドレス </th>
           <td><%= @post.restaurant.email %></td>
         </tr>
+        <tr>
+          <th></th>
+          <td>
+          <% if @post.restaurant.internet? %>
+            <%= link_to '予約する', new_restaurant_reservation_path(@post.restaurant_id), class: "btn btn-secondary mb-3" %>
+          <% end %>
+          </td>
+        </tr>
       </table>
     </div>
   </div>

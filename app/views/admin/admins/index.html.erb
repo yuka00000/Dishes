@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="card-list py-5">
+    <div class="row">
+      <div class="col-6">
+        <h5>ユーザー一覧</h5>
+        <table>
+          <tr>
+            <th>ユーザー名</th>
+            <th></th>
+          </tr>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= user.user_name %> | <%= link_to "削除", admin_path(user,type:"user"), method: :delete, data: { confirm: "本当に削除しますか？" } %></td>
+              <td></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+      <div class="col-6">
+        <h5>飲食店一覧</h5>
+        <table>
+          <tr>
+            <th>飲食店名</th>
+            <th></th>
+          </tr>
+          <% @restaurants.each do |restaurant| %>
+            <tr>
+              <td><%= restaurant.name %> | <%= link_to "削除", admin_path(restaurant,type:"restaurant"), method: :delete, data: { confirm: "本当に削除しますか？" } %></td>
+              <td></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

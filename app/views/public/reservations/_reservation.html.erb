@@ -1,0 +1,14 @@
+<% reservations.each do |reservation| %>
+  <tr>
+    <td><%= reservation.date.strftime("%Y/%m/%d") %></td>
+    <td><%= reservation.time.strftime("%H:%M") %></td>
+    <td>
+      <%= link_to restaurant_path(reservation.restaurant_id) do %>
+        <%= reservation.restaurant.name %>
+      <% end %>
+    </td>
+    <td>
+      <%= link_to '予約詳細', reservation_path(reservation), class: "btn btn-secondary" %>
+    </td>
+  </tr>
+<% end %>

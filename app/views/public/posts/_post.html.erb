@@ -16,7 +16,7 @@
               <% end %>
             </p>
             <span>
-              <%= link_to post_path(post.id), style:"color:black;" do %>
+              <%= link_to user_path(post.user_id), style:"color:black;" do %>
                 <i class="fas fa-user"></i>
                 <%= post.user.user_name %>
               <% end %>

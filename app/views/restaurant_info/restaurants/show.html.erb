@@ -40,6 +40,7 @@
         </tr>
       </table>
       <%= link_to '編集する', edit_restaurant_info_restaurant_path(@restaurant), class: "btn btn-secondary mb-3" %>
+      <%= link_to '予約を確認する', restaurant_info_restaurant_reservations_path(current_restaurant), class: "btn btn-secondary mb-3" %>
     </div>
     <div class="col-md-5 pt-3">
       <h5>イメージ画像</h5>

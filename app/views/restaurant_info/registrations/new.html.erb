@@ -53,7 +53,7 @@
               <th><%= f.label :予約方法 %></th>
               <td></td>
               <td>
-                <%= f.select :reservation_method, [["予約不可", "予約不可"], ["電話予約", "電話予約"], ["ネット予約", "ネット予約"]], include_blank: "選択して下さい" %>
+                <%= f.select :reservation_method, options_from_collection_for_select(Restaurant.reservation_methods, :first, :first), include_blank: "選択して下さい" %>
               </td>
             </tr>
             <tr>

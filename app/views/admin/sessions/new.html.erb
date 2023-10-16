@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 pt-3 offset-md-1">
+      <h5 class="sign_in mb-3">管理者 ログイン</h5>
+        <%= form_with model: Admin.new, url: admin_session_path do |f| %>
+        <%= render "public/shared/error_messages", resource: resource %>
+          <table>
+            <tr>
+              <th><%= f.label :メールアドレス %></td>
+              <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+            </tr>
+            <tr>
+              <th><%= f.label :パスワード %></th>
+              <td><%= f.password_field :password, autocomplete: "current-password" %></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                <button type="submit" class= "btn btn-secondary mb-5">ログイン</button>
+              </td>
+            <tr>
+        </table>
+      <% end %>
+
+      <h5 class="sign_up mb-3">会員登録がお済みでない方はこちら</h5>
+        <p>
+          <%= link_to "会員登録", new_admin_registration_path %>
+        </p>
+      </div>
+  </div>
+</div>
