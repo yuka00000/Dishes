@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 2023_10_16_055813) do
     t.integer "restaurant_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "category"
     t.text "hashbody"
   end
 
@@ -126,6 +127,8 @@ ActiveRecord::Schema.define(version: 2023_10_16_055813) do
     t.string "phone_number", null: false
     t.string "post_code", null: false
     t.string "address", null: false
+    t.time "opening_time", null: false
+    t.time "closing_time", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -148,6 +151,7 @@ ActiveRecord::Schema.define(version: 2023_10_16_055813) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.datetime "last_sign_in_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true

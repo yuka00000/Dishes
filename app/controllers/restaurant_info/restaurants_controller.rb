@@ -24,11 +24,11 @@ class RestaurantInfo::RestaurantsController < ApplicationController
       render :edit
     end
   end
-  
+
   private
 
   def restaurant_params
-    params.require(:restaurant).permit(:name, :explanation, :post_code, :address, :price_lower_limit, :price_upper_limit, :hp_url, :reservation_method, :email, :phone_number, :restaurant_image)
+    params.require(:restaurant).permit(:name, :explanation, :post_code, :address, :price_lower_limit, :price_upper_limit, :hp_url, :reservation_method, :email, :phone_number, :restaurant_imag, :opening_time, :closing_time)
   end
 
 end

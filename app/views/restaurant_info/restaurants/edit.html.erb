@@ -59,6 +59,21 @@
               </td>
             </tr>
             <tr>
+              <th><%= f.label :営業時間 %></th>
+              <td></td>
+              <td>
+                <%= f.time_field :opening_time, autofocus: true, step: 1800, list: "data-list" %>
+                ～
+                <%= f.time_field :closing_time, autofocus: true, step: 1800, list: "data-list" %>
+                <datalist id="data-list">
+                  <%= 24.times do |i| %>
+                    <option value="<%= sprintf("%02d",i) %>:00"></option>
+                    <option value="<%= sprintf("%02d",i) %>:30"></option>
+                  <% end %>
+                </datalist>
+              </td>
+            </tr>
+            <tr>
               <th><%= f.label :ホームページURL %></th>
               <td></td>
               <td>

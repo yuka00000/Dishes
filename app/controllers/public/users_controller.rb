@@ -1,5 +1,5 @@
 class Public::UsersController < ApplicationController
-
+after_action :after_login, :only => :create
   def show
     @user = User.find(params[:id])
     @current_user = current_user
@@ -54,5 +54,7 @@ class Public::UsersController < ApplicationController
       redirect_to posts__path
     end
   end
-
+  def after_login
+    current_user.update(last_sign_in_at: current_user.current_sign_in_at) unless current_user.last_sign_in_at
+  end
 end

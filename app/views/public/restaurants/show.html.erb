@@ -22,6 +22,10 @@
           <td><%= @post.restaurant.price_lower_limit %> ～ <%= @post.restaurant.price_upper_limit %></td>
         </tr>
         <tr>
+          <th>営業時間</th>
+          <td><%= @post.restaurant.opening_time.strftime("%H:%M") %> ～ <%= @post.restaurant.closing_time.strftime("%H:%M") %></td>
+        </tr>
+        <tr>
           <th>ホームページURL</th>
           <td><%= @post.restaurant.hp_url %></td>
         </tr>

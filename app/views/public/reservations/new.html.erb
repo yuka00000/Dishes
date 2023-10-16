@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-10 pt-3 offset-md-1">
-      <h5 class="mb-3">予約する</h5>
+      <h5 class="mb-3"><%= @restaurant.name %>を予約する</h5>
         <%= form_with model: @reservation, url: restaurant_reservations_path do |f| %>
           <table>
             <tr>
@@ -23,6 +23,7 @@
                   <% end %>
                 </datalist>
               </td>
+              <td>※<%= @restaurant.name %>の営業時間：<%= @restaurant.opening_time.strftime("%H:%M") %> ～ <%= @restaurant.closing_time.strftime("%H:%M") %></td>
             </tr>
             <tr>
               <th><%= f.label :人数 %></th>

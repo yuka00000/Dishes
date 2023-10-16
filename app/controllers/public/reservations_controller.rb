@@ -1,6 +1,7 @@
 class Public::ReservationsController < ApplicationController
   def new
     @reservation = Reservation.new
+    @restaurant = Restaurant.find(params[:restaurant_id])
   end
 
   def create
@@ -17,14 +18,14 @@ class Public::ReservationsController < ApplicationController
     @reservations = current_user.reservations.all
     @restaurant= Restaurant.where(reservation_id: params[:id])
   end
-  
+
   def show
     @reservation = Reservation.find(params[:id])
   end
-  
+
   private
 
   def reservation_params
-    params.require(:reservation).permit(:date, :time, :people_count, :user_id, :restaurant_id)
+    params.require(:reservation).permit(:date, :time, :people_count, :user_id, :restaurant_id, :opening_time, :closing_time)
   end
 end

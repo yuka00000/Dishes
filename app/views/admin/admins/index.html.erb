@@ -3,30 +3,36 @@
     <div class="row">
       <div class="col-6">
         <h5>ユーザー一覧</h5>
-        <table>
+        <table class="table">
           <tr>
             <th>ユーザー名</th>
-            <th></th>
+            <th>タイトル</th>
+            <th>本文</th>
+            <th>最終ログイン日</th>
           </tr>
-          <% @users.each do |user| %>
+          <% @posts.each do |post| %>
             <tr>
-              <td><%= user.user_name %> | <%= link_to "削除", admin_path(user,type:"user"), method: :delete, data: { confirm: "本当に削除しますか？" } %></td>
-              <td></td>
+              <td><%= post.user.user_name %></td>
+              <td><%= post.title %></td>
+              <td><%= post.body %></td>
+              <td><%= post.user.last_sign_in_at %></td>
+              <td> | <%= link_to "強制退会", admin_path(post.user,type:"user"), method: :delete, data: { confirm: "本当に削除しますか？" } %></td>
             </tr>
           <% end %>
         </table>
       </div>
       <div class="col-6">
         <h5>飲食店一覧</h5>
-        <table>
+        <table class="table">
           <tr>
             <th>飲食店名</th>
-            <th></th>
+            <th>紹介文</th>
           </tr>
           <% @restaurants.each do |restaurant| %>
             <tr>
-              <td><%= restaurant.name %> | <%= link_to "削除", admin_path(restaurant,type:"restaurant"), method: :delete, data: { confirm: "本当に削除しますか？" } %></td>
-              <td></td>
+              <td><%= restaurant.name %></td>
+              <td><%= restaurant.explanation %></td>
+              <td> | <%= link_to "強制退会", admin_path(restaurant,type:"restaurant"), method: :delete, data: { confirm: "本当に削除しますか？" } %></td>
             </tr>
           <% end %>
         </table>

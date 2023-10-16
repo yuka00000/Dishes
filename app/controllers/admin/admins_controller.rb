@@ -3,7 +3,8 @@ class Admin::AdminsController < ApplicationController
   end
 
   def index
-    @users = User.all
+ 
+    @posts = Post.all
     @restaurants = Restaurant.all
   end
 
@@ -19,7 +20,7 @@ class Admin::AdminsController < ApplicationController
       flash[:success] = "ユーザーを削除しました。"
       redirect_to admins_path
     else
-      User.find(params[:id]).destroy
+      Post.find(params[:id]).destroy
       flash[:success] = "ユーザーを削除しました。"
       redirect_to admins_path
     end
