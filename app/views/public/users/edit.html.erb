@@ -1,6 +1,16 @@
 <div class="container">
   <div class="row">
     <div class="col-md-10 pt-3 offset-md-1">
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h3><%= @user.errors.count %> error prohibited this book from being saved:</h3>
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
       <h5>プロフィール編集</h5>
       <%= form_with model: @user, url: user_path do |f| %>
         <table>

@@ -17,11 +17,16 @@ after_action :after_login, :only => :create
 
   def update
     @user = User.find(params[:id])
-    unless @user == current_user
+    
+    unless @user == current_user 
       redirect_to posts_path
     end
-
-    if @user.update(user_params)
+    
+    if @user.email == 'guest@example.com'
+      flash[:notice] = "ゲストユーザーは編集できません。"
+      redirect_to posts_path
+    elsif @user.email != 'guest@example.com'
+      @user.update(user_params)
       flash[:notice] = "You have updated book successfully."
       redirect_to user_path
     else

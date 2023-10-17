@@ -2,6 +2,7 @@ class Public::PostsController < ApplicationController
   before_action :authenticate_user!
   def new
     @post = Post.new
+    @posts = Post.all
   end
 
   def create
@@ -52,7 +53,7 @@ class Public::PostsController < ApplicationController
     @user = current_user
     @tag = Hashtag.find_by(hashname: params[:name])
     @posts = @tag.posts
-    pp "@post------------------------------#{@posts.inspect}"
+    #pp "@post------------------------------#{@posts.inspect}"
   end
 
   private

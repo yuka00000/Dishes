@@ -6,6 +6,16 @@ class Restaurant < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :reservations, dependent: :destroy
   has_one_attached :restaurant_image
+  validates :name, presence: true
+  validates :explanation, presence: true, length: { maximum: 50 }
+  validates :price_upper_limit, presence: true
+  validates :price_lower_limit, presence: true
+  validates :reservation_method, presence: true
+  validates :phone_number, presence: true
+  validates :post_code, presence: true
+  validates :address, presence: true
+  validates :opening_time, presence: true
+  validates :closing_time, presence: true
 
   enum reservation_method: { internet: "internet", phone: "phone", reservation_none: "reservation_none" }
   

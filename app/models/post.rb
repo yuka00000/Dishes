@@ -7,6 +7,7 @@ class Post < ApplicationRecord
   has_many :post_hashtag_relations, dependent: :destroy
   has_many :hashtags, through: :post_hashtag_relations
   
+  validates :get_post_image, presence: true
   validates :title, presence: true
   validates :body, presence: true, length: { maximum: 200 }
 

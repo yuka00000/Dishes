@@ -3,7 +3,6 @@ class Admin::AdminsController < ApplicationController
   end
 
   def index
- 
     @posts = Post.all
     @restaurants = Restaurant.all
   end
@@ -17,10 +16,10 @@ class Admin::AdminsController < ApplicationController
   def destroy
     if params[:type] == "restaurant"
       Restaurant.find(params[:id]).destroy
-      flash[:success] = "ユーザーを削除しました。"
+      flash[:success] = "飲食店を削除しました。"
       redirect_to admins_path
     else
-      Post.find(params[:id]).destroy
+      User.find(params[:id]).destroy
       flash[:success] = "ユーザーを削除しました。"
       redirect_to admins_path
     end

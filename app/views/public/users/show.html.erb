@@ -1,4 +1,7 @@
 <div class="container">
+  <div>
+      <%= flash[:notice] %>
+  </div>
   <div class="row">
     <% if @user == current_user %>
       <h4 class="pt-4 offset-md-2"><%= @user.user_name %>さんのマイページ</h4>
