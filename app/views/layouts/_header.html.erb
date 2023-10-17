@@ -2,9 +2,20 @@
   <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
       <a class="navbar-brand">
+      <% if user_signed_in? %>
         <%= link_to root_path, class: 'nav-link text-light' do %>
           <%= image_tag 'cutlery.png', :size =>'60x60' %>
         <% end %>
+      <% elsif restaurant_signed_in? %>
+        <%= link_to restaurant_info_top_path, class: 'nav-link text-light' do %>
+          <%= image_tag 'cutlery.png', :size =>'60x60' %>
+        <% end %>
+      <% elsif admin_signed_in? %>
+        <%= link_to admins_top_path, class: 'nav-link text-light' do %>
+          <%= image_tag 'cutlery.png', :size =>'60x60' %>
+        <% end %>
+      <% end %>  
+      
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -24,7 +35,6 @@
             <li>
               <%= link_to "ログアウト", destroy_user_session_path, class: 'nav-link text-light', method: :delete %>
             </li>
-
           <% elsif restaurant_signed_in? %>
             <li>
               <%= link_to "飲食店ログアウト", destroy_restaurant_session_path, class: 'nav-link text-light', method: :delete %>
