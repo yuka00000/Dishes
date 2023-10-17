@@ -57,6 +57,8 @@ Rails.application.routes.draw do
   # 管理者用
   scope module: :admin do
     get 'admins/top' => 'admins#top', as: 'admins_top'
+    get 'admins/users/:id' => 'admins#users', as: 'admins_users'
+    get 'admins/restaurants/:id' => 'admins#restaurants', as: 'admins_restaurants'
     resources :admins, only: [:index, :edit, :update, :destroy]
   end
 

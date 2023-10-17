@@ -12,15 +12,23 @@ class Admin::AdminsController < ApplicationController
 
   def update
   end
+  
+  def users
+    @user = User.find(params[:id])
+    @posts = Post.all
+  end
 
+  def restaurants
+  end
+  
   def destroy
     if params[:type] == "restaurant"
       Restaurant.find(params[:id]).destroy
-      flash[:success] = "飲食店を削除しました。"
+      flash[:success] = "飲食店を強制退会させました。"
       redirect_to admins_path
     else
       User.find(params[:id]).destroy
-      flash[:success] = "ユーザーを削除しました。"
+      flash[:success] = "ユーザーを強制退会させました"
       redirect_to admins_path
     end
   end
