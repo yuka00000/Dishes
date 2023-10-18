@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
     .box {
-      background-image: url('TCPAKU0780.jpg');
+      background-image: image-url('TCPAKU0780.jpg');
       background-size: cover;
       background-position: center;
       height: 100%;
@@ -22,7 +22,7 @@
           padding: 20px;
         }
   }
-  
+
   html, body {
     box-sizing: border-box;
     height: 100%;
