@@ -1,29 +1,43 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-10 pt-3 offset-md-1">
-      <h5 class="mb-3"><%= @restaurant.name %>を予約する</h5>
+    <div class="col-md-7 pt-5 offset-md-1">
+      <% if @reservation.errors.any? %>
+        <div id="error_explanation">
+          <h3><%= @reservation.errors.count %> error prohibited this book from being saved:</h3>
+          <ul>
+            <% @reservation.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <h4 class="title mb-3"><%= @restaurant.name %>を予約する</h4>
         <%= form_with model: @reservation, url: restaurant_reservations_path do |f| %>
-          <table>
+          <table class="table">
             <tr>
               <th><%= f.label :日時 %></th>
               <td></td>
               <td>
                 <%= f.date_field :date, class: 'form-control' %>
               </td>
+              <td></td>
             </tr>
             <tr>
               <th><%= f.label :時間 %></th>
               <td></td>
               <td>
-                <%= f.time_field :time, class: 'form-control', step: 1800, list: "data-list" %>
+                <%= f.time_field :time, step: 1800, list: "data-list", class: 'form-control' %>
                 <datalist id="data-list">
                   <%= 24.times do |i| %>
                     <option value="<%= sprintf("%02d",i) %>:00"></option>
                     <option value="<%= sprintf("%02d",i) %>:30"></option>
                   <% end %>
                 </datalist>
+                <p>
+                  ※<%= @restaurant.name %>の営業時間：<%= @restaurant.opening_time.strftime("%H:%M") %> ～ <%= @restaurant.closing_time.strftime("%H:%M") %>
+                </p>
               </td>
-              <td>※<%= @restaurant.name %>の営業時間：<%= @restaurant.opening_time.strftime("%H:%M") %> ～ <%= @restaurant.closing_time.strftime("%H:%M") %></td>
+              <td></td>
             </tr>
             <tr>
               <th><%= f.label :人数 %></th>
@@ -31,8 +45,10 @@
               <td>
                 <%= f.select :people_count, [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"]], include_blank: "選択して下さい" %>
               </td>
+              <td></td>
             </tr>
             <tr>
+              <th></th>
               <td></td>
               <td></td>
               <td>

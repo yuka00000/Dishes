@@ -17,11 +17,11 @@ after_action :after_login, :only => :create
 
   def update
     @user = User.find(params[:id])
-    
-    unless @user == current_user 
+
+    unless @user == current_user
       redirect_to posts_path
     end
-    
+
     if @user.email == 'guest@example.com'
       flash[:notice] = "ゲストユーザーは編集できません。"
       redirect_to posts_path
@@ -34,13 +34,13 @@ after_action :after_login, :only => :create
       render :edit
     end
   end
-  
+
   # フォロー一覧
   def follows
   user = User.find(params[:id])
   @users = user.following_users
   end
-  
+
   # フォロワー一覧
   def followers
     user = User.find(params[:id])

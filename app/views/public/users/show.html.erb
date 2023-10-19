@@ -3,9 +3,14 @@
       <%= flash[:notice] %>
   </div>
   <div class="row">
-    <% if @user == current_user %>
-      <h4 class="pt-4 offset-md-2"><%= @user.user_name %>さんのマイページ</h4>
-    <% end %>
+      <h4 class="title pt-4 offset-md-2">
+        <%= @user.user_name %>さんの
+        <% if @user == current_user %>
+          マイページ
+        <% else %>
+          ユーザーページ
+        <% end %>
+      </h4>
   </div>
   <div class="row">
     <div class="col-md-1 pt-4 mr-4 offset-md-2">
@@ -39,7 +44,7 @@
     </div>
   </div>
   <div class="card-list py-5">
-    <h5>投稿一覧</h5>
+    <h5 class="subtitle">投稿一覧</h5>
     <div class="row">
       <%= render 'public/posts/post', posts: @posts %>
     </div>

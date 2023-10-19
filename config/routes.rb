@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     get '/post/hashtag/:name' => 'posts#hashtag'
     get '/post/hashtag' => 'posts#hashtag'
     get '/reservation_complete', to: 'reservations#complete', as: 'reservation_completed'
+    resources :favorites, only: [:index]
     resources :users, only: [:show, :edit, :update, :destroy] do
       member do
         get :follows, :followers
@@ -50,7 +51,7 @@ Rails.application.routes.draw do
     get 'top' => 'homes#top'
     get 'restaurants/mypage' => 'restaurants#show'
     resources :restaurants, only: [:show, :edit, :update, :destroy] do
-      resources :reservations, only: [:show, :index]
+      resources :reservations, only: [:index]
     end
   end
 

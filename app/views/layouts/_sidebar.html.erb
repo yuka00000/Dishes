@@ -1,7 +1,15 @@
-<div class="serch pb-3">
+<div class="side-bar pb-3 pl-3 mt-3">
   <%= render 'public/searches/search' %>
+  <p class="pt-3">
+    <%= link_to reservations_path, style:"color:white;" do %>
+      <i class="fa-solid fa-circle"></i> 予約一覧
+    <% end %>
+  </p>
+  <p>
+    <%= link_to favorites_path, style:"color:white;" do %>
+      <i class="fa-solid fa-circle"></i> いいねした投稿
+    <% end %>
+  </p>
 </div>
-  <%= link_to '●予約一覧', reservations_path, class: 'text-light pl-3' %>
-
 
 

@@ -5,6 +5,7 @@ class Public::ReservationsController < ApplicationController
   end
 
   def create
+    @restaurant = Restaurant.find(params[:restaurant_id])
     @reservation = current_user.reservations.new(reservation_params)
     @reservation.restaurant_id = params[:restaurant_id]
     if @reservation.save

@@ -1,79 +1,79 @@
 <div class="container">
-  <div class="p-3" style="width: 350px;">
-    <div class="card shadow">
-      <%= image_tag @post.get_post_image, class:"card-img-top"; %>
-      <div class="card-body">
-        <div class="row">
-          <div class="col-2 p-0 pl-2">
-           <%= image_tag @post.user.get_user_image(50,50), class:"mt-3 rounded-circle"; %>
-          </div>
-          <div class="col-9 pl-4">
-            <p class="card-title">
-              <strong><i class="far fa-flag"></i><span> <%= @post.title %></span></strong>
-            </p>
-            <p class="card-text">
-              <%= @post.body %>
-            </p>
-            <p class="hashtag">
-              <%= render_with_hashtags(@post.hashbody) %>
-            </p>
-            <%= link_to restaurant_path, style:"color:black;" do %>
-              <i class="fas fa-map-marker-alt"></i>
-              <%= @post.restaurant.name %></p>
-            <% end %>
-            <%= link_to user_path(@post.user_id), style:"color:black;" do %>
-              <span><i class="fas fa-user"></i>
-              <%= @post.user.user_name  %>
-            <% end %>
-            <div class="d-flex">
-              <span class="mr-3">
-                <%= link_to post_path(@post.id), style:"color:black;" do %>
-                  <i class="far fa-comment"></i>
-                  <%= @post.post_comments.count %>
+  <div class="row">
+    <div class="col-7">
+      <div class="p-3 mx-auto", style="width: 350px;">
+        <div class="card shadow">
+          <%= image_tag @post.get_post_image, class:"card-img-top"; %>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-2 p-0 pl-2">
+               <%= image_tag @post.user.get_user_image(50,50), class:"mt-3 rounded-circle"; %>
+              </div>
+              <div class="col-9 pl-4">
+                <p class="card-title">
+                  <strong><span> <%= @post.title %></span></strong>
+                </p>
+                <p class="card-text">
+                  <%= @post.body %>
+                </p>
+                <p class="hashtag">
+                  <%= render_with_hashtags(@post.hashbody) %>
+                </p>
+                <%= link_to restaurant_path(@post.restaurant_id), style:"color:black;" do %>
+                  <i class="fas fa-map-marker-alt"></i>
+                  <%= @post.restaurant.name %></p>
                 <% end %>
-              </span>
-              <span>
-                <%= render 'public/favorites/btn', post: @post %>
-              </span>
+                <%= link_to user_path(@post.user_id), style:"color:black;" do %>
+                  <i class="fas fa-user"></i>
+                  <%= @post.user.user_name  %>
+                <% end %>
+                <div class="d-flex">
+                  <span class="mr-3">
+                    <%= link_to post_path(@post.id), style:"color:black;" do %>
+                      <i class="far fa-comment"></i>
+                      <%= @post.post_comments.count %>
+                    <% end %>
+                  </span>
+                  <span>
+                    <%= render 'public/favorites/btn', post: @post %>
+                  </span>
+                </div>
+                  <% if @post.user_id == current_user.id %>
+                    <%= link_to '編集する', edit_post_path(@post), class: "btn btn-secondary mb-3" %>
+                    <%= link_to '削除する', post_path(@post), class: "btn btn-secondary mb-3", method: :delete, "data-confirm" => "本当に消しますか？"  %>
+                  <% end %>
+                <%= link_to "戻る", posts_path, class: "btn btn-secondary mb-3" %>
+              </div>
             </div>
-
-              <% if @post.user_id == current_user.id %>
-                <%= link_to '編集する', edit_post_path(@post), class: "btn btn-secondary mb-3" %>
-                <%= link_to '削除する', post_path(@post), class: "btn btn-secondary mb-3", method: :delete, "data-confirm" => "本当に消しますか？"  %>
-              <% end %>
-
-            <%= link_to "戻る", posts_path, class: "btn btn-secondary mb-3" %>
           </div>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-12">
-        <div class="comment mt-3">
-          <%= form_with model: [@post, @post_comment] do |f| %>
-            <%= f.text_area :comment, placeholder: "コメントする" %>
-            <%= f.submit "送信する" %>
-          <% end %>
+      <div class="col-5">
+        <div class="comment mt-5">
+          <h5 class="subtitle">コメント</h5>
           <% @post.post_comments.each do |post_comment| %>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-2 p-0 ml-2">
+            <div class="row">
+              <div class="col-1 p-0">
                 <%= image_tag post_comment.user.get_user_image(40,40), class:"mt-1 rounded-circle"; %>
-                </div>
-                <div class="col-9">
-                  <%= post_comment.user.user_name %>
-                  <p class="m-0">
-                    <%= post_comment.comment %>
-                  </p>
-                  <div class="strftime", style="font-size:small; text-align:right; padding-bottom: 20px">
-                    <%= post_comment.created_at.strftime('%Y/%m/%d') %>
-                    <% if post_comment.user == current_user %>
-                      <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %>
-                    <% end %>
-                  </div>
+              </div>
+              <div class="col-9">
+                <%= post_comment.user.user_name %>
+                <p class="m-0">
+                  <%= post_comment.comment %>
+                </p>
+                <div class="strftime", style="font-size:small; text-align:right; padding-bottom: 20px">
+                  <%= post_comment.created_at.strftime('%Y/%m/%d') %>
+                  <% if post_comment.user == current_user %>
+                    <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %>
+                  <% end %>
                 </div>
               </div>
             </div>
+          <% end %>
+          <%= form_with model: [@post, @post_comment] do |f| %>
+            <%= f.text_area :comment, size: "40x3", placeholder: "コメントする" %>
+            <%= f.submit "送信する" %>
           <% end %>
         </div>
       </div>

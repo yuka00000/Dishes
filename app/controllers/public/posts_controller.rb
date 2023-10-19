@@ -53,7 +53,7 @@ class Public::PostsController < ApplicationController
     @user = current_user
     @tag = Hashtag.find_by(hashname: params[:name])
     @posts = @tag.posts
-    #pp "@post------------------------------#{@posts.inspect}"
+ 
   end
 
   private

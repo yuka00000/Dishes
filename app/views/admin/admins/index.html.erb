@@ -1,10 +1,10 @@
 <div class="container">
+  <div>
+    <%= flash[:notice] %>
+  </div>
   <div class="row">
     <div class="col-6 pt-3">
-      <div>
-        <%= flash[:notice] %>
-      </div>
-      <h5>投稿一覧</h5>
+      <h4 class="title">投稿一覧</h4>
       <table class="table">
         <tr>
           <th>タイトル</th>
@@ -29,7 +29,7 @@
       </table>
     </div>
     <div class="col-6 pt-3">
-      <h5>飲食店一覧</h5>
+      <h4 class="title">飲食店一覧</h4>
       <table class="table">
         <tr>
           <th>飲食店名</th>

@@ -1,5 +1,5 @@
 class Public::RestaurantsController < ApplicationController
   def show
-    @post = Post.find(params[:id])
+    @restaurant = Restaurant.find(params[:id])
   end
 end
