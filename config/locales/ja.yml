@@ -1,11 +1,11 @@
-  ja: # 日本語の設定を行う
-    enums: # enumの設定を行う
-      restaurant: # モデル名（Orderモデルに対して）
-        reservation_method: # カラム名（payment_methodカラムに対して）
-          interne: "ネット予約"
-          phone: "電話"
-          reservation_none: "予約不可"
-    activerecord:
+ja:
+  enums:
+    restaurant: # モデル名（Orderモデルに対して）
+      reservation_method: # カラム名（payment_methodカラムに対して）
+        internet: "ネット予約"
+        phone: "電話"
+        reservation_none: "予約不可"
+  activerecord:
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

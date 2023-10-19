@@ -37,9 +37,9 @@
               <th><%= f.label :価格帯 %></th>
               <td></td>
               <td>
-                <%= f.select :price_lower_limit, [["999円以下"], ["1,000円", "1,000円"], ["2,000円", "2,000円"], ["3,000円", "3,000円"], ["4,000円", "4,000円"], ["5,000円", "5,000円"], ["6,000円", "6,000円"], ["7,000円", "7,000円"], ["8,000円", "8,000円"], ["9,000円", "9,000円"], ["10,000円以上"]], include_blank: "選択して下さい" %>
+                <%= f.select :price_lower_limit, decorate_for_select(Restaurant.price_lower_limit_values), include_blank: "選択して下さい" %>
                  ～
-                <%= f.select :price_upper_limit, [["999円以下"], ["1,999円", "1,999円"], ["2,999円", "2,999円"], ["3,999円", "3,999円"], ["4,999円", "4,999円"], ["5,999円", "5,999円"], ["6,999円", "6,999円"], ["7,999円", "7,999円"], ["8,999円", "8,999円"], ["9,999円", "9,999円"], ["10,999円", "10,999円"], ["14,999円", "14,999円"], ["20,000円以上"]], include_blank: "選択して下さい" %>
+                <%= f.select :price_upper_limit, decorate_for_select(Restaurant.price_upper_limit_values), include_blank: "選択して下さい" %>
               </td>
             </tr>
             <tr>
@@ -68,7 +68,7 @@
               <th><%= f.label :予約方法 %></th>
               <td></td>
               <td>
-                <%= f.select :reservation_method, options_from_collection_for_select(Restaurant.reservation_methods, :first, :first), include_blank: "選択して下さい" %>
+                <%= f.select :reservation_method, Restaurant.reservation_methods.keys.map{|k| [I18n.t("enums.restaurant.reservation_method.#{k}"), k]}, { include_blank: "選択して下さい", selected: @restaurant.reservation_method }, {} %>
               </td>
             </tr>
             <tr>

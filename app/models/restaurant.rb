@@ -17,7 +17,19 @@ class Restaurant < ApplicationRecord
   validates :opening_time, presence: true
   validates :closing_time, presence: true
 
-  enum reservation_method: { internet: "internet", phone: "phone", reservation_none: "reservation_none" }
+  enum reservation_method: { internet: 0, phone: 1, reservation_none: 2 }
+  
+#["999円以下"], ["1,000円", "1,000円"], ["2,000円", "2,000円"], ["3,000円", "3,000円"], ["4,000円", "4,000円"], ["5,000円", "5,000円"], ["6,000円", "6,000円"], ["7,000円", "7,000円"], ["8,000円", "8,000円"], ["9,000円", "9,000円"], ["10,000円以上"]], include_blank: "選択して下さい" %>
+#                 ～
+#                <%= f.select :price_upper_limit, [["999円以下"], ["1,999円", "1,999円"], ["2,999円", "2,999円"], ["3,999円", "3,999円"], ["4,999円", "4,999円"], ["5,999円", "5,999円"], ["6,999円", "6,999円"], ["7,999円", "7,999円"], ["8,999円", "8,999円"], ["9,999円", "9,999円"], ["10,999円", "10,999円"], ["14,999円", "14,999円"], ["20,000円以上"]], include_blank: "選択して下さい" %>
+#              </td>
+  def self.price_lower_limit_values
+    [ 999 ] + (1..10).map{|i| i * 1000}
+  end
+  
+  def self.price_upper_limit_values
+    [ 999 ] + (1..19).map{|i| i * 1000 - 1} + [ 20000 ]
+  end
   
   def get_restaurant_image(width, height)
     unless restaurant_image.attached?

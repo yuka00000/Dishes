@@ -119,10 +119,10 @@ ActiveRecord::Schema.define(version: 2023_10_16_055813) do
     t.string "encrypted_password", default: "", null: false
     t.string "name", null: false
     t.text "explanation", null: false
-    t.string "price_upper_limit", null: false
-    t.string "price_lower_limit", null: false
+    t.integer "price_upper_limit", null: false
+    t.integer "price_lower_limit", null: false
     t.text "hp_url"
-    t.string "reservation_method", null: false
+    t.integer "reservation_method", null: false
     t.string "phone_number", null: false
     t.string "post_code", null: false
     t.string "address", null: false
