@@ -1,1 +1,16 @@
-管理者トップ
+<div class="container">
+  <div>
+    <%= flash[:notice] %>
+  </div>
+    <p class="pt-5">
+      <%= link_to admin_posts_path, style:"color:black; font-size:20px;" do %>
+        <i class="fa-solid fa-circle"></i> 投稿一覧を見る
+      <% end %>
+    </p>
+    <p class="pt-3">
+      <%= link_to admin_restaurants_path, style:"color:black; font-size:20px;" do %>
+        <i class="fa-solid fa-circle"></i> レストラン一覧を見る
+      <% end %>
+    </p>
+  </div>
+</div>

@@ -28,7 +28,7 @@ class Restaurant < ApplicationRecord
   end
   
   def self.price_upper_limit_values
-    [ 999 ] + (1..19).map{|i| i * 1000 - 1} + [ 20000 ]
+    [ 999 ] + (2..19).map{|i| i * 1000 - 1} + [ 20000 ]
   end
   
   def get_restaurant_image(width, height)

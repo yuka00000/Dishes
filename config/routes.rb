@@ -16,8 +16,7 @@ Rails.application.routes.draw do
   }
 
   # 管理者用
-  devise_for :admin, skip: [:passwords] ,controllers: {
-    registrations: "admin/registrations",
+  devise_for :admins, skip: [:passwords] ,controllers: {
     sessions: "admin/sessions"
   }
 
@@ -56,11 +55,10 @@ Rails.application.routes.draw do
   end
 
   # 管理者用
-  scope module: :admin do
-    get 'admins/top' => 'admins#top', as: 'admins_top'
-    get 'admins/users/:id' => 'admins#users', as: 'admins_users'
-    get 'admins/restaurants/:id' => 'admins#restaurants', as: 'admins_restaurants'
-    resources :admins, only: [:index, :edit, :update, :destroy]
+  namespace :admin do
+    get 'top' => 'admins#top'
+    resources :posts, only: [:index, :show, :destroy]
+    resources :restaurants, only: [:index, :destroy]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

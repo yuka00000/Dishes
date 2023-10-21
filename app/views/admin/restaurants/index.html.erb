@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6 pt-3">
+      <h4 class="title">飲食店一覧</h4>
+      <table class="table">
+        <tr>
+          <th>飲食店名</th>
+          <th>紹介文</th>
+        </tr>
+        <% @restaurants.each do |restaurant| %>
+          <tr>
+            <td><%= restaurant.name %></td>
+            <td><%= restaurant.explanation %></td>
+            <td>
+              <%= link_to "戻る", admin_top_path, class: "btn btn-secondary" %>
+              <%= link_to "強制退会", admin_restaurant_path(restaurant), method: :delete, data: { confirm: "本当に強制退会させますか？" }, class: "btn btn-secondary" %>
+            </td>
+        <% end %>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><%= paginate @restaurants %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

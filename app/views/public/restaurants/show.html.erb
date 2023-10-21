@@ -19,7 +19,7 @@
         </tr>
         <tr>
           <th>価格帯</th>
-          <td><%= @restaurant.price_lower_limit %> ～ <%= @restaurant.price_upper_limit %></td>
+          <td><%= number_to_currency(@restaurant.price_lower_limit) %> ～ <%= number_to_currency(@restaurant.price_upper_limit) %></td>
         </tr>
         <tr>
           <th>営業時間</th>
@@ -31,7 +31,7 @@
         </tr>
         <tr>
           <th>予約方法 </th>
-          <td><%= @restaurant.reservation_method %></td>
+          <td><%= @restaurant.reservation_method_i18n %></td>
         </tr>
         <tr>
           <th>電話番号</th>

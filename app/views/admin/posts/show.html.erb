@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 pt-5">
+      <h4 class="title"><%= @post.user.user_name %>さんの登録情報</h4>
+      <table class="table">
+        <tr>
+          <th>名前</th>
+          <th>ユーザー名</th>
+          <th>メールアドレス</th>
+          <th>電話番号</th>
+          <th>最終ログイン日</th>
+          <th></th>
+        </tr>
+          <tr>
+            <td><%= @post.user.last_name %> <%= @post.user.first_name %></td>
+            <td><%= @post.user.user_name %></td>
+            <td><%= @post.user.email %></td>
+            <td><%= @post.user.phone_number %></td>
+            <td><%= l @post.user.last_sign_in_at, format: :long %></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+              <%= link_to "戻る", admin_posts_path, class: "btn btn-secondary" %>
+              <%= link_to "強制退会", admin_post_path(@post.user_id,type:"users"), method: :delete, data: { confirm: "本当に強制退会させますか？" }, class: "btn btn-secondary" %>
+            </td>
+          </tr>
+      </table>
+    </div>
+  </div>
+</div>
