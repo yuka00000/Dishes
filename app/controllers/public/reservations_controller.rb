@@ -1,4 +1,5 @@
 class Public::ReservationsController < ApplicationController
+  before_action :authenticate_user!
   def new
     @reservation = Reservation.new
     @restaurant = Restaurant.find(params[:restaurant_id])

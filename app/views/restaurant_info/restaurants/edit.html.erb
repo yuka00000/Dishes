@@ -36,6 +36,23 @@
               </td>
             </tr>
             <tr>
+              <th><%= f.label :お店のジャンル %></th>
+              <td></td>
+              <td>
+                <%#= f.select :genre, Restaurant.genres.keys.map{|k| [I18n.t("enums.restaurant.genre.#{k}"), k]}, { include_blank: "選択して下さい", selected: @restaurant.genre }, {} %>
+                
+                <% @genres.each do |genre| %>
+                  <div>
+                    <%= f.check_box :genre,
+                       { multiple: true,
+                          checked: @restaurant.genre.present? ? @restaurant.genre.split(",").include?(genre) : false },  #・・・①
+                          genre, nil %>
+                    <span><%= genre %></span>
+                  </div>
+                <% end %>
+              </td>
+            </tr>
+            <tr>
               <th><%= f.label :所在地 %></th>
               <td><%= f.label :〒 %></td>
               <td>

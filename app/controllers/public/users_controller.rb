@@ -1,5 +1,5 @@
 class Public::UsersController < ApplicationController
-after_action :after_login, :only => :create
+before_action :authenticate_admin!
   def show
     @user = User.find(params[:id])
     @current_user = current_user

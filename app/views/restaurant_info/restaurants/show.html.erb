@@ -1,4 +1,7 @@
 <div class="container">
+  <div>
+    <%= flash[:notice] %>
+  </div>
   <div class="row">
     <h4 class="title sign_up pt-4"><%= @restaurant.name %>のマイページ</h4>
   </div>
@@ -13,6 +16,10 @@
         <tr>
           <th class="table-secondary">紹介文</th>
           <td><%= @restaurant.explanation %></td>
+        </tr>
+        <tr>
+          <th class="table-secondary">お店のジャンル </th>
+          <td><%= @restaurant.genre_i18n %></td>
         </tr>
         <tr>
           <th class="table-secondary">所在地</th>

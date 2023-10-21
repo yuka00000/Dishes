@@ -123,6 +123,7 @@ ActiveRecord::Schema.define(version: 2023_10_16_055813) do
     t.integer "price_lower_limit", null: false
     t.text "hp_url"
     t.integer "reservation_method", null: false
+    t.integer "genre"
     t.string "phone_number", null: false
     t.string "post_code", null: false
     t.string "address", null: false

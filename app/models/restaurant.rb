@@ -18,11 +18,9 @@ class Restaurant < ApplicationRecord
   validates :closing_time, presence: true
 
   enum reservation_method: { internet: 0, phone: 1, reservation_none: 2 }
+  enum genre: { japanese: 0, western: 1, asian: 2, italian: 3, french: 4, chinese: 5, cafe: 6, korean: 7, spainh: 8, mexican: 9, thai: 10, indian:11, indonesian: 12, ethnic: 13, fast_food: 14, pasta: 15, hamburger_steak: 16, pizza: 17, curry: 18, salad: 19, ice_cream: 20, omelette_rice: 21, sushi: 22, yakitori: 23, tonkatu: 24, tenpura: 25, 
+healthy: 26, cake: 27, coffee: 28, tea: 29, meat:30 }
   
-#["999円以下"], ["1,000円", "1,000円"], ["2,000円", "2,000円"], ["3,000円", "3,000円"], ["4,000円", "4,000円"], ["5,000円", "5,000円"], ["6,000円", "6,000円"], ["7,000円", "7,000円"], ["8,000円", "8,000円"], ["9,000円", "9,000円"], ["10,000円以上"]], include_blank: "選択して下さい" %>
-#                 ～
-#                <%= f.select :price_upper_limit, [["999円以下"], ["1,999円", "1,999円"], ["2,999円", "2,999円"], ["3,999円", "3,999円"], ["4,999円", "4,999円"], ["5,999円", "5,999円"], ["6,999円", "6,999円"], ["7,999円", "7,999円"], ["8,999円", "8,999円"], ["9,999円", "9,999円"], ["10,999円", "10,999円"], ["14,999円", "14,999円"], ["20,000円以上"]], include_blank: "選択して下さい" %>
-#              </td>
   def self.price_lower_limit_values
     [ 999 ] + (1..10).map{|i| i * 1000}
   end

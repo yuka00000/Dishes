@@ -1,10 +1,42 @@
 ja:
   enums:
-    restaurant: # モデル名（Orderモデルに対して）
-      reservation_method: # カラム名（payment_methodカラムに対して）
+    restaurant: 
+      reservation_method: 
         internet: "ネット予約"
         phone: "電話"
         reservation_none: "予約不可"
+      genre:
+        japanese: "和食"
+        western: "洋食"
+        asian: "アジア料理"
+        italian: "イタリアン"
+        french: "フレンチ"
+        chinese: "中華"
+        cafe: "カフェ"
+        korean: "韓国料理"
+        spainh: "スペイン料理"
+        mexican: "メキシコ料理"
+        thai: "タイ料理"
+        indian: "インド料理"
+        indonesian: "インドネシア料理"
+        ethnic: "民族料理"
+        fast_food: "ファストフード"
+        pasta: "パスタ"
+        hamburger_steak: "ハンバーガー"
+        pizza: "ピザ"
+        curry: "カレー"
+        salad: "サラダ"
+        ice_cream: "アイスクリーム"
+        omelette_rice: "オムレツ"
+        sushi: "寿司"
+        yakitori: "焼き鳥"
+        tonkatu: "とんかつ"
+        tenpura: "天ぷら"
+        healthy: "ヘルシー"
+        cake: "ケーキ"
+        coffee: "コーヒー"
+        tea: "お茶、紅茶"
+        meat: "肉料理"
   activerecord:
     errors:
       messages:

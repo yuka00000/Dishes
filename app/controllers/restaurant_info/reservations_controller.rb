@@ -1,4 +1,5 @@
 class RestaurantInfo::ReservationsController < ApplicationController
+  before_action :authenticate_restaurant!
   def index
     @reservations = current_restaurant.reservations.all
   end

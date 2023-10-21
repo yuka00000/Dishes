@@ -35,10 +35,10 @@ class Public::PostsController < ApplicationController
     is_matching_login_user
     @post = Post.find(params[:id])
     if @post.update(post_params)
-      flash[:notice] = "You have updated book successfully."
+      flash[:notice] = "更新に成功しました。"
       redirect_to posts_path
     else
-      flash[:notice] = "You failed to update user."
+      flash[:notice] = "更新に失敗しました。"
       render :edit
     end
   end
@@ -53,9 +53,8 @@ class Public::PostsController < ApplicationController
     @user = current_user
     @tag = Hashtag.find_by(hashname: params[:name])
     @posts = @tag.posts
- 
   end
-
+  
   private
 
   def is_matching_login_user

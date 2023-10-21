@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     get '/post/hashtag/:name' => 'posts#hashtag'
     get '/post/hashtag' => 'posts#hashtag'
     get '/reservation_complete', to: 'reservations#complete', as: 'reservation_completed'
+    get 'rank' => 'ranks#rank'
     resources :favorites, only: [:index]
     resources :users, only: [:show, :edit, :update, :destroy] do
       member do
