@@ -19,7 +19,11 @@
         </tr>
         <tr>
           <th class="table-secondary">お店のジャンル </th>
-          <td><%= @restaurant.genre_i18n %></td>
+          <td>
+            <% @restaurant.genres.each do |genre| %>
+              <span><%= genre.name %></span>
+            <% end %>
+          </td>
         </tr>
         <tr>
           <th class="table-secondary">所在地</th>

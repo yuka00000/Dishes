@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-10 pt-3 offset-md-1">
+    <div class="col-md-12 pt-3 offset-md-1">
       <h4 class="title sign_up mb-3">飲食店 編集画面</h4>
       <% if @restaurant.errors.any? %>
         <div id="error_explanation">
@@ -39,17 +39,14 @@
               <th><%= f.label :お店のジャンル %></th>
               <td></td>
               <td>
-                <%#= f.select :genre, Restaurant.genres.keys.map{|k| [I18n.t("enums.restaurant.genre.#{k}"), k]}, { include_blank: "選択して下さい", selected: @restaurant.genre }, {} %>
-                
-                <% @genres.each do |genre| %>
-                  <div>
-                    <%= f.check_box :genre,
-                       { multiple: true,
-                          checked: @restaurant.genre.present? ? @restaurant.genre.split(",").include?(genre) : false },  #・・・①
-                          genre, nil %>
-                    <span><%= genre %></span>
-                  </div>
-                <% end %>
+                <ul class="row" style="list-style:none;"><%#= f.select :genre, Restaurant.genres.keys.map{|k| [I18n.t("enums.restaurant.genre.#{k}"), k]}, { include_blank: "選択して下さい", selected: @restaurant.genre }, {} %>
+                  <%= f.collection_check_boxes :genre_ids, Genre.pluck(:id, :name), :first, :last do |s| %>
+                    <li class="mr-3">
+                      <%= s.check_box checked: @restaurant_genre_ids.include?(s.value) %>
+                      <%= s.label {s.text} %>
+                    </li>
+                  <% end %>
+                </ul>
               </td>
             </tr>
             <tr>

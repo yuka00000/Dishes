@@ -31,7 +31,9 @@
                   <span class="mr-3">
                     <%= link_to post_path(@post.id), style:"color:black;" do %>
                       <i class="far fa-comment"></i>
-                      <%= @post.post_comments.count %>
+                      <span id="comment_count">
+                        <%= @post.post_comments.count %>
+                      </span>
                     <% end %>
                   </span>
                   <span id="favorite_buttons_<%= @post.id %>">
@@ -52,12 +54,12 @@
       <div class="col-5">
         <div class="comment mt-5">
           <h5 class="subtitle">コメント</h5>
-          <p id="comment_index">
+          <div id="comment_index">
             <%= render 'public/post_comments/index', post: @post, post_comment: @post_comment, class:"text-dark" %>
-          </p>
-          <p id="comment-form">
+          </div>
+          <div id="comment-form">
             <%= render 'public/post_comments/form', post: @post, post_comment: @post_comment, class:"text-dark" %>
-          </p>
+          </div>
         </div>
       </div>
     </div>
