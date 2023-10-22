@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-7 pt-3">
+      <h4 class="title"><%= @genre.name %></h4>
+      <table class="table">
+        <% @restaurants.each do |restaurant| %>
+          <tr>
+            <td>
+              <%= link_to restaurant_path(restaurant) do %>
+                <%= restaurant.name %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+  </div>
+</div>

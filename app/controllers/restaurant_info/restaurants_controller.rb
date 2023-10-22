@@ -5,7 +5,6 @@ class RestaurantInfo::RestaurantsController < ApplicationController
   end
 
   def edit
-   # @genres = Restaurant.genres.keys.map{|k| I18n.t("enums.restaurant.genre.#{k}")}
     @restaurant = Restaurant.find(params[:id])
     unless @restaurant == current_restaurant
       redirect_to restaurant_info_top_path

@@ -6,15 +6,15 @@ class Post < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :post_hashtag_relations, dependent: :destroy
   has_many :hashtags, through: :post_hashtag_relations
-  
-  validates :get_post_image, presence: true
+
+  validates :get_post_image, presence: true, blob: { content_type: :image }
   validates :title, presence: true
   validates :body, presence: true, length: { maximum: 200 }
 
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
-  
+
   # 検索方法分岐
   def self.looks(search, word)
     if search == "perfect_match"
@@ -29,7 +29,7 @@ class Post < ApplicationRecord
       @post = Post.all
     end
   end
-  
+
   after_create do
     post = Post.find_by(id: id)
     # hashbodyに打ち込まれたハッシュタグを検出
@@ -52,10 +52,6 @@ class Post < ApplicationRecord
   end
 
   def get_post_image
-    unless post_image.attached?
-      file_path = Rails.root.join('app/assets/images/no_image.jpg')
-      post_image.attach(io: File.open(file_path), filename: 'no-image.jpg', content_type: 'image/jpeg')
-    end
     post_image
   end
 end

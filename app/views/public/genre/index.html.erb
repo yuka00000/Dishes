@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-7 pt-3 offset-md-2">
+      <h4 class="title">ジャンルからお店を探す</h4>
+      <table class="table">
+        <% @genres.each do |genre| %>
+          <tr>
+            <td><%= link_to genre.name, genre_path(genre) %></td>
+          </tr>
+        <% end %>
+      </table>
+  </div>
+</div>

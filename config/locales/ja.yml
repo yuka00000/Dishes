@@ -38,6 +38,11 @@ ja:
         tea: "お茶、紅茶"
         meat: "肉料理"
   activerecord:
+    attributes:
+      post:
+        title: "タイトル"
+        body: "本文"
+        get_post_image: "画像"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

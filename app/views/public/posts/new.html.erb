@@ -4,7 +4,7 @@
       <div class="col-md-10 pt-3 justify-content-center">
         <% if @post.errors.any? %>
           <div id="error_explanation">
-            <h3><%= @post.errors.count %> error prohibited this book from being saved:</h3>
+            <h3><%= @post.errors.count %> 件のエラーが発生しました。</h3>
             <ul>
               <% @post.errors.full_messages.each do |message| %>
                 <li><%= message %></li>
@@ -16,7 +16,7 @@
           <div class="search pb-4">
             <%= form_with model: @post do |f| %>
               <h5 class="image pt-2">画像</h5>
-              <%= f.file_field :post_image, placeholder: "プロフィール画像", accept: "image/*" %>
+              <%= f.file_field :post_image, multiple: true, placeholder: "プロフィール画像", accept: "image/*" %>
               <h5 class="title pt-2">タイトル</h5>
               <%= f.text_field :title %>
               <h5 class="body pt-2">本文</h5>

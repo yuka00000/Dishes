@@ -4,7 +4,7 @@
       <h4 class="title sign_up mb-3">飲食店 編集画面</h4>
       <% if @restaurant.errors.any? %>
         <div id="error_explanation">
-        <h3><%= @restaurant.errors.count %> error prohibited this obj from being saved:</h3>
+        <h3><%= @restaurant.errors.count %>  件のエラーが発生しました。</h3>
           <ul>
             <% @restaurant.errors.full_messages.each do |message| %>
               <li><%= message %></li>
@@ -15,7 +15,7 @@
         <%= form_with model: @restaurant, url: restaurant_info_restaurant_path do |f| %>
           <table>
             <tr>
-              <th><%= f.label :イメージ画像 %></label></th>
+              <th style="width: 20%"><%= f.label :イメージ画像 %></label></th>
               <td></td>
               <td>
                 <%= f.file_field :restaurant_image, placeholder: "プロフィール画像", accept: "image/*" %> <br>
@@ -33,20 +33,6 @@
               <td></td>
               <td>
                 <%= f.text_field :explanation, autofocus: true, size: "40x40", autocomplete: "explanation", placeholder: "地元で人気の食堂です！" %>
-              </td>
-            </tr>
-            <tr>
-              <th><%= f.label :お店のジャンル %></th>
-              <td></td>
-              <td>
-                <ul class="row" style="list-style:none;"><%#= f.select :genre, Restaurant.genres.keys.map{|k| [I18n.t("enums.restaurant.genre.#{k}"), k]}, { include_blank: "選択して下さい", selected: @restaurant.genre }, {} %>
-                  <%= f.collection_check_boxes :genre_ids, Genre.pluck(:id, :name), :first, :last do |s| %>
-                    <li class="mr-3">
-                      <%= s.check_box checked: @restaurant_genre_ids.include?(s.value) %>
-                      <%= s.label {s.text} %>
-                    </li>
-                  <% end %>
-                </ul>
               </td>
             </tr>
             <tr>
@@ -113,6 +99,20 @@
               <td></td>
               <td>
                 <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number", placeholder: "0000000000"  %>
+              </td>
+            </tr>
+            <tr>
+              <th><%= f.label :お店のジャンル %>(複数選択可)</th>
+              <td></td>
+              <td>
+                <ul class="row" style="list-style:none;"><%#= f.select :genre, Restaurant.genres.keys.map{|k| [I18n.t("enums.restaurant.genre.#{k}"), k]}, { include_blank: "選択して下さい", selected: @restaurant.genre }, {} %>
+                  <%= f.collection_check_boxes :genre_ids, Genre.pluck(:id, :name), :first, :last do |s| %>
+                    <li class="mr-3">
+                      <%= s.check_box checked: @restaurant_genre_ids.include?(s.value) %>
+                      <%= s.label {s.text} %>
+                    </li>
+                  <% end %>
+                </ul>
               </td>
             </tr>
             <tr>

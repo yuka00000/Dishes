@@ -13,7 +13,7 @@ class Public::PostsController < ApplicationController
     if @post.save
       redirect_to posts_path
     else
-      render new
+      render :new
     end
   end
 
@@ -65,6 +65,6 @@ class Public::PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :body, :post_image, :user_id, :restaurant_id, :hashbody, hashtag_ids: [])
+    params.require(:post).permit(:title, :body, :user_id, :restaurant_id, :hashbody, post_image: [], hashtag_ids: [])
   end
 end

@@ -35,6 +35,8 @@ Rails.application.routes.draw do
       end
       resource :relationships, only: [:create, :destroy]
     end
+    
+    resources :genre, only: [:index, :show]
 
     resources :restaurants, only: [:show] do
       resources :reservations, only: [:new, :create]

@@ -1,5 +1,5 @@
 class Public::UsersController < ApplicationController
-before_action :authenticate_admin!
+before_action :authenticate_user!
   def show
     @user = User.find(params[:id])
     @current_user = current_user
