@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-おにぎり = User.find_or_create_by!(email: "onigiri@example.com") do |user|
+onigiri = User.find_or_create_by!(email: "onigiri@example.com") do |user|
   user.last_name = "山田"
   user.first_name = "太郎"
   user.last_name_kana = "ヤマダ"
@@ -18,7 +18,7 @@
   user.user_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/user-onigiri.png"), filename:"user-onigiri.png")
 end
 
-三毛猫 = User.find_or_create_by!(email: "cat@example.com") do |user|
+cat = User.find_or_create_by!(email: "cat@example.com") do |user|
   user.last_name = "佐藤"
   user.first_name = "花子"
   user.last_name_kana = "サトウ"
@@ -30,7 +30,7 @@ end
   user.user_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/user-cat.jpg"), filename:"user-cat.jpg")
 end
 
-ひよこ = User.find_or_create_by!(email: "chick@example.com") do |user|
+chick = User.find_or_create_by!(email: "chick@example.com") do |user|
   user.last_name = "田中"
   user.first_name = "昭子"
   user.last_name_kana = "タナカ"
@@ -42,7 +42,7 @@ end
   user.user_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/user-chick.png"), filename:"user-chick.png")
 end
 
-食パン = User.find_or_create_by!(email: "bread@example.com") do |user|
+bread = User.find_or_create_by!(email: "bread@example.com") do |user|
   user.last_name = "木村"
   user.first_name = "一"
   user.last_name_kana = "キムラ"
@@ -54,7 +54,7 @@ end
   user.user_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/user-bread.png"), filename:"user-bread.png")
 end
 
-てんとう虫 = User.find_or_create_by!(email: "ladybug@example.com") do |user|
+ladybug = User.find_or_create_by!(email: "ladybug@example.com") do |user|
   user.last_name = "渡辺"
   user.first_name = "香織"
   user.last_name_kana = "ワタナベ"
@@ -66,7 +66,7 @@ end
   user.user_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/user-ladybug.png"), filename:"user-ladybug.png")
 end
 
-オオカミ = User.find_or_create_by!(email: "wolf@example.com") do |user|
+wolf = User.find_or_create_by!(email: "wolf@example.com") do |user|
   user.last_name = "鈴木"
   user.first_name = "次郎"
   user.last_name_kana = "スズキ"
@@ -78,11 +78,11 @@ end
   user.user_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/user-wolf.png"), filename:"user-wolf.png")
 end
 
-令和食堂 = Restaurant.find_or_create_by!(email: "reiwa@example.com") do |restaurant|
+reiwa = Restaurant.find_or_create_by!(email: "reiwa@example.com") do |restaurant|
   restaurant.name = "令和食堂"
   restaurant.explanation = "地元で人気の食堂です！"
-  restaurant.price_upper_limit = "1,000"
-  restaurant.price_lower_limit = "4,999"
+  restaurant.price_upper_limit = "4,999円"
+  restaurant.price_lower_limit = "1,000円"
   restaurant.hp_url = "https://..."
   restaurant.reservation_method = "internet"
   restaurant.phone_number = "00000000000"
@@ -91,7 +91,71 @@ end
   restaurant.opening_time = "11:00"
   restaurant.closing_time = "22:00"
   restaurant.password = "password"
-  restaurant.restaurant_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/user-wolf.png"), filename:"user-wolf.png")
+  restaurant.restaurant_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/restaurant-reiwa.jpg"), filename:"restaurant-reiwa.jpg")
+end
+
+pancake = Restaurant.find_or_create_by!(email: "pancake@example.com") do |restaurant|
+  restaurant.name = "幸せパンケーキ"
+  restaurant.explanation = "パンケーキが人気のカフェです。"
+  restaurant.price_upper_limit = "3,999円"
+  restaurant.price_lower_limit = "999円以下"
+  restaurant.hp_url = "https://..."
+  restaurant.reservation_method = "internet"
+  restaurant.phone_number = "00000000000"
+  restaurant.post_code = "0000000"
+  restaurant.address = "東京都千代田区神保町1-1-1-1"
+  restaurant.opening_time = "10:00"
+  restaurant.closing_time = "17:00"
+  restaurant.password = "password"
+  restaurant.restaurant_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/restaurant-cafe.jpg"), filename:"restaurant-cafe.jpg")
+end
+
+chinese = Restaurant.find_or_create_by!(email: "chinese@example.com") do |restaurant|
+  restaurant.name = "広東飯点"
+  restaurant.explanation = "広東料理の老舗です。"
+  restaurant.price_upper_limit = "3,999円"
+  restaurant.price_lower_limit = "3,000円"
+  restaurant.hp_url = "https://..."
+  restaurant.reservation_method = "phone"
+  restaurant.phone_number = "00000000000"
+  restaurant.post_code = "0000000"
+  restaurant.address = "東京都台東区浅草橋1-1-1-1"
+  restaurant.opening_time = "11:00"
+  restaurant.closing_time = "22:00"
+  restaurant.password = "password"
+  restaurant.restaurant_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/restaurant-chainese.jpg"), filename:"restaurant-chainese.jpg")
+end
+
+hamburg_steak = Restaurant.find_or_create_by!(email: "hamburg-steak@example.com") do |restaurant|
+  restaurant.name = "ハンバーグと米"
+  restaurant.explanation = "ハンバーグと卵かけご飯が人気のお店です！"
+  restaurant.price_upper_limit = "3,999円"
+  restaurant.price_lower_limit = "3,000円"
+  restaurant.hp_url = "https://..."
+  restaurant.reservation_method = "internet"
+  restaurant.phone_number = "00000000000"
+  restaurant.post_code = "0000000"
+  restaurant.address = "東京都板橋区要町1-1-1-1"
+  restaurant.opening_time = "11:30"
+  restaurant.closing_time = "21:00"
+  restaurant.password = "password"
+  restaurant.restaurant_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/restaurant-hamburger.jpg"), filename:"restaurant-hamburger.jpg")
+end
+
+french_kitchen = Restaurant.find_or_create_by!(email: "french@example.com") do |restaurant|
+  restaurant.name = "French Kitchen"
+  restaurant.explanation = "フレンチの名店です。"
+  restaurant.price_upper_limit = "20,000円"
+  restaurant.price_lower_limit = "6,000円"
+  restaurant.hp_url = "https://..."
+  restaurant.reservation_method = "internet"
+  restaurant.phone_number = "00000000000"
+  restaurant.post_code = "0000000"
+  restaurant.address = "東京都渋谷区道玄坂1-1-1-1"
+  restaurant.opening_time = "11:30"
+  restaurant.closing_time = "21:00"
+  restaurant.password = "password"
+  restaurant.restaurant_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/resutaurant.jpg"), filename:"resutaurant.jpg")
 end
 
 Genre.destroy_all
@@ -129,6 +193,6 @@ Genre.create!([
 {name:  "肉料理"}
 ])
 
-令和食堂.genres.destroy_all
-令和食堂.genres << Genre.find_by_name('天ぷら')
-令和食堂.genres << Genre.find_by_name('和食')
+reiwa.genres.destroy_all
+reiwa.genres << Genre.find_by_name('天ぷら')
+reiwa.genres << Genre.find_by_name('和食')
