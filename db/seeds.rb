@@ -81,8 +81,8 @@ end
 reiwa = Restaurant.find_or_create_by!(email: "reiwa@example.com") do |restaurant|
   restaurant.name = "令和食堂"
   restaurant.explanation = "地元で人気の食堂です！"
-  restaurant.price_upper_limit = "4,999円"
-  restaurant.price_lower_limit = "1,000円"
+  restaurant.price_upper_limit = 4999
+  restaurant.price_lower_limit = 1000
   restaurant.hp_url = "https://..."
   restaurant.reservation_method = "internet"
   restaurant.phone_number = "00000000000"
@@ -97,8 +97,8 @@ end
 pancake = Restaurant.find_or_create_by!(email: "pancake@example.com") do |restaurant|
   restaurant.name = "幸せパンケーキ"
   restaurant.explanation = "パンケーキが人気のカフェです。"
-  restaurant.price_upper_limit = "3,999円"
-  restaurant.price_lower_limit = "999円以下"
+  restaurant.price_upper_limit = 3999
+  restaurant.price_lower_limit = 999
   restaurant.hp_url = "https://..."
   restaurant.reservation_method = "internet"
   restaurant.phone_number = "00000000000"
@@ -113,8 +113,8 @@ end
 chinese = Restaurant.find_or_create_by!(email: "chinese@example.com") do |restaurant|
   restaurant.name = "広東飯点"
   restaurant.explanation = "広東料理の老舗です。"
-  restaurant.price_upper_limit = "3,999円"
-  restaurant.price_lower_limit = "3,000円"
+  restaurant.price_upper_limit = 3999
+  restaurant.price_lower_limit = 3000
   restaurant.hp_url = "https://..."
   restaurant.reservation_method = "phone"
   restaurant.phone_number = "00000000000"
@@ -129,8 +129,8 @@ end
 hamburg_steak = Restaurant.find_or_create_by!(email: "hamburg-steak@example.com") do |restaurant|
   restaurant.name = "ハンバーグと米"
   restaurant.explanation = "ハンバーグと卵かけご飯が人気のお店です！"
-  restaurant.price_upper_limit = "3,999円"
-  restaurant.price_lower_limit = "3,000円"
+  restaurant.price_upper_limit = 3999
+  restaurant.price_lower_limit = 3000
   restaurant.hp_url = "https://..."
   restaurant.reservation_method = "internet"
   restaurant.phone_number = "00000000000"
@@ -145,8 +145,8 @@ end
 french_kitchen = Restaurant.find_or_create_by!(email: "french@example.com") do |restaurant|
   restaurant.name = "French Kitchen"
   restaurant.explanation = "フレンチの名店です。"
-  restaurant.price_upper_limit = "20,000円"
-  restaurant.price_lower_limit = "6,000円"
+  restaurant.price_upper_limit = 20000
+  restaurant.price_lower_limit = 6000
   restaurant.hp_url = "https://..."
   restaurant.reservation_method = "internet"
   restaurant.phone_number = "00000000000"
