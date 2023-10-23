@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(version: 2023_10_22_063637) do
     t.integer "restaurant_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "category"
   end
 
   create_table "relationships", force: :cascade do |t|

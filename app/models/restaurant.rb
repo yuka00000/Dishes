@@ -8,7 +8,7 @@ class Restaurant < ApplicationRecord
   has_many :restaurant_genres
   has_many :genres, through: :restaurant_genres
   has_one_attached :restaurant_image
-  validates :name, presence: true
+  validates :name, presence: true, length: { in: 1..20 }
   validates :explanation, presence: true, length: { maximum: 50 }
   validates :price_upper_limit, presence: true
   validates :price_lower_limit, presence: true
