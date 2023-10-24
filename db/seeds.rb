@@ -158,7 +158,7 @@ hamburg_steak2 = Restaurant.find_or_create_by!(email: "hamburg-steak2@example.co
   restaurant.restaurant_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/restaurant-hamburg-steak2.jpg"), filename:"restaurant-hamburg-steak2.jpg")
 end
 
-hamburg_steak3 = Restaurant.find_or_create_by!(email: "hamburg-steak2@example.com") do |restaurant|
+hamburg_steak3 = Restaurant.find_or_create_by!(email: "hamburg-steak@example.com") do |restaurant|
   restaurant.name = "満腹食堂"
   restaurant.explanation = "満腹になるメニューとコスパの良さが売りです！"
   restaurant.price_upper_limit = 1500
