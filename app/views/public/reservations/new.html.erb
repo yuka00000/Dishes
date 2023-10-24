@@ -3,7 +3,7 @@
     <div class="col-md-7 pt-5 offset-md-1">
       <% if @reservation.errors.any? %>
         <div id="error_explanation">
-          <h3><%= @reservation.errors.count %> error prohibited this book from being saved:</h3>
+          <h3><%= @reservation.errors.count %> 件のエラーが発生しました。:</h3>
           <ul>
             <% @reservation.errors.full_messages.each do |message| %>
               <li><%= message %></li>

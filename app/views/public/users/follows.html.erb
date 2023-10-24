@@ -4,8 +4,8 @@
       <table class='table'>
         <thead>
           <tr>
-            <th>Image</th>
-            <th>name</th>
+            <th>アイコン</th>
+            <th>ユーザー名</th>
             <th></th>
             <th></th>
           </tr>
@@ -15,7 +15,7 @@
             <tr>
               <td>
                 <%= link_to user_path(user) do %>
-                  <%= image_tag user.get_user_image(50,50) %>
+                  <%= image_tag user.get_user_image(70, 70), class:"rounded-circle"  %>
                 <% end %>
               </td>
               <td><%= user.user_name %></td>

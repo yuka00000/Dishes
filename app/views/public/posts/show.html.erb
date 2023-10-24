@@ -44,7 +44,7 @@
                     <%= link_to '編集する', edit_post_path(@post), class: "btn btn-secondary mb-3" %>
                     <%= link_to '削除する', post_path(@post), class: "btn btn-secondary mb-3", method: :delete, "data-confirm" => "本当に消しますか？"  %>
                   <% end %>
-                <%= link_to "戻る", posts_path, class: "btn btn-secondary mb-3" %>
+                <%= link_to "戻る", :back, class: "btn btn-secondary mb-3" %>
               </div>
             </div>
           </div>

@@ -46,15 +46,16 @@ class Public::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
+    flash[:notice] = "投稿を削除しました。"
     redirect_to posts_path
   end
-  
+
   def hashtag
     @user = current_user
     @tag = Hashtag.find_by(hashname: params[:name])
     @posts = @tag.posts
   end
-  
+
   private
 
   def is_matching_login_user
@@ -65,6 +66,6 @@ class Public::PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :body, :user_id, :restaurant_id, :hashbody, post_image: [], hashtag_ids: [])
+    params.require(:post).permit(:title, :body, :post_image, :user_id, :restaurant_id, :hashbody, hashtag_ids: [])
   end
 end

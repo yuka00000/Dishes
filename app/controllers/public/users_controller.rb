@@ -27,10 +27,10 @@ before_action :authenticate_user!
       redirect_to posts_path
     elsif @user.email != 'guest@example.com'
       @user.update(user_params)
-      flash[:notice] = "You have updated book successfully."
+      flash[:notice] = "更新に成功しました。"
       redirect_to user_path
     else
-      flash[:notice] = "You failed to update user."
+      flash[:notice] = "更新に失敗しました。"
       render :edit
     end
   end
