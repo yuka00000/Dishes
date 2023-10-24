@@ -127,7 +127,7 @@ chinese = Restaurant.find_or_create_by!(email: "chinese@example.com") do |restau
 end
 
 hamburg_steak = Restaurant.find_or_create_by!(email: "hamburg-steak@example.com") do |restaurant|
-  restaurant.name = "ハンバーグと米"
+  restaurant.name = "ひき肉と卵"
   restaurant.explanation = "ハンバーグと卵かけご飯が人気のお店です！"
   restaurant.price_upper_limit = 3999
   restaurant.price_lower_limit = 3000
@@ -139,7 +139,39 @@ hamburg_steak = Restaurant.find_or_create_by!(email: "hamburg-steak@example.com"
   restaurant.opening_time = "11:30"
   restaurant.closing_time = "21:00"
   restaurant.password = "password"
-  restaurant.restaurant_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/restaurant-hamburger.jpg"), filename:"restaurant-hamburger.jpg")
+  restaurant.restaurant_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/restaurant-hamburg-steak.jpg"), filename:"restaurant-hamburg-steak.jpg")
+end
+
+hamburg_steak2 = Restaurant.find_or_create_by!(email: "hamburg-steak2@example.com") do |restaurant|
+  restaurant.name = "炭焼きハンバーグ"
+  restaurant.explanation = "ハンバーグの焼き加減はレアがおすすめです！"
+  restaurant.price_upper_limit = 4999
+  restaurant.price_lower_limit = 3000
+  restaurant.hp_url = "https://..."
+  restaurant.reservation_method = "internet"
+  restaurant.phone_number = "00000000000"
+  restaurant.post_code = "0000000"
+  restaurant.address = "東京都新宿区西新宿1-1-1-1"
+  restaurant.opening_time = "10:00"
+  restaurant.closing_time = "22:30"
+  restaurant.password = "password"
+  restaurant.restaurant_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/restaurant-hamburg-steak2.jpg"), filename:"restaurant-hamburg-steak2.jpg")
+end
+
+hamburg_steak3 = Restaurant.find_or_create_by!(email: "hamburg-steak2@example.com") do |restaurant|
+  restaurant.name = "満腹食堂"
+  restaurant.explanation = "満腹になるメニューとコスパの良さが売りです！"
+  restaurant.price_upper_limit = 1500
+  restaurant.price_lower_limit = 999
+  restaurant.hp_url = "https://..."
+  restaurant.reservation_method = "internet"
+  restaurant.phone_number = "00000000000"
+  restaurant.post_code = "0000000"
+  restaurant.address = "東京都武蔵野市吉祥寺1-1-1-1"
+  restaurant.opening_time = "10:00"
+  restaurant.closing_time = "21:00"
+  restaurant.password = "password"
+  restaurant.restaurant_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/restaurant-hamburg-steak3.jpg"), filename:"restaurant-hamburg-steak3.jpg")
 end
 
 french_kitchen = Restaurant.find_or_create_by!(email: "french@example.com") do |restaurant|
@@ -158,6 +190,12 @@ french_kitchen = Restaurant.find_or_create_by!(email: "french@example.com") do |
   restaurant.restaurant_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/resutaurant.jpg"), filename:"resutaurant.jpg")
 end
 
+admin = Admin.find_or_create_by!(email: "admin@example.com") do |admin|
+  admin.name = "admin"
+  admin.password = "password"
+end
+
+
 Genre.destroy_all
 Genre.create!([
 {name:  "和食"},
@@ -175,6 +213,7 @@ Genre.create!([
 {name:  "インドネシア料理"},
 {name:  "民族料理"},
 {name:  "ファストフード"},
+{name:  "ハンバーグ"},
 {name:  "パスタ"},
 {name:  "ハンバーガー"},
 {name:  "ピザ"},
@@ -184,6 +223,7 @@ Genre.create!([
 {name:  "オムレツ"},
 {name:  "寿司"},
 {name:  "焼き鳥"},
+{name:  "ラーメン"},
 {name:  "とんかつ"},
 {name:  "天ぷら"},
 {name:  "ヘルシー"},
@@ -196,3 +236,43 @@ Genre.create!([
 reiwa.genres.destroy_all
 reiwa.genres << Genre.find_by_name('天ぷら')
 reiwa.genres << Genre.find_by_name('和食')
+reiwa.genres << Genre.find_by_name('とんかつ')
+reiwa.genres << Genre.find_by_name('ラーメン')
+
+pancake.genres.destroy_all
+pancake.genres << Genre.find_by_name('カフェ')
+pancake.genres << Genre.find_by_name('ケーキ')
+pancake.genres << Genre.find_by_name('アイスクリーム')
+pancake.genres << Genre.find_by_name('コーヒー')
+pancake.genres << Genre.find_by_name('お茶、紅茶')
+
+chinese.genres.destroy_all
+chinese.genres << Genre.find_by_name('中華')
+chinese.genres << Genre.find_by_name('アジア料理')
+chinese.genres << Genre.find_by_name('ラーメン')
+chinese.genres << Genre.find_by_name('肉料理')
+
+hamburg_steak.genres.destroy_all
+hamburg_steak.genres << Genre.find_by_name('ハンバーグ')
+hamburg_steak.genres << Genre.find_by_name('洋食')
+hamburg_steak.genres << Genre.find_by_name('肉料理')
+
+hamburg_steak2.genres.destroy_all
+hamburg_steak2.genres << Genre.find_by_name('ハンバーグ')
+hamburg_steak2.genres << Genre.find_by_name('洋食')
+hamburg_steak2.genres << Genre.find_by_name('サラダ')
+hamburg_steak2.genres << Genre.find_by_name('肉料理')
+
+hamburg_steak3.genres.destroy_all
+hamburg_steak3.genres << Genre.find_by_name('ハンバーグ')
+hamburg_steak3.genres << Genre.find_by_name('洋食')
+hamburg_steak3.genres << Genre.find_by_name('肉料理')
+hamburg_steak3.genres << Genre.find_by_name('パスタ')
+hamburg_steak3.genres << Genre.find_by_name('とんかつ')
+hamburg_steak3.genres << Genre.find_by_name('カレー')
+
+french_kitchen.genres.destroy_all
+french_kitchen.genres << Genre.find_by_name('フレンチ')
+french_kitchen.genres << Genre.find_by_name('洋食')
+french_kitchen.genres << Genre.find_by_name('肉料理')
+french_kitchen.genres << Genre.find_by_name('オムレツ')
