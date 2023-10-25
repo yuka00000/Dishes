@@ -3,6 +3,8 @@ class Public::ReservationsController < ApplicationController
   def new
     @reservation = Reservation.new
     @restaurant = Restaurant.find(params[:restaurant_id])
+    @date = params[:date]
+    @time = params[:time]
   end
 
   def create

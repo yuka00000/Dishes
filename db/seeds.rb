@@ -195,6 +195,15 @@ admin = Admin.find_or_create_by!(email: "admin@example.com") do |admin|
   admin.password = "password"
 end
 
+post_hamburg_steak3 = Post.find_or_create_by!(title: '都内の美味しいハンバーグ【第3位】') do |post|
+  post.title = "都内の美味しいハンバーグ【第3位】"
+  post.body = "第3位は武蔵野市吉祥寺にある「満腹食堂」です。ハンバーグにチキン、ソーセージとボリューム満点！ハンバーグは、ジューシーで美味しく、スープ、サラダ、ご飯のセットで700円とコスパも最高です！"
+  post.user = User.find_by(email: 'onigiri@example.com')  
+  post.restaurant = Restaurant.find_or_create_by!(name: '満腹食堂')
+  post.hashbody = "#東京都" "#吉祥寺" "#グルメ" "#ハンバーグ" "#コスパ" "#大盛り"
+  post.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/post-hamburg-steak3.jpg"), filename:"post-hamburg-steak3.jpg")
+  #exchange1.exchange_post_images.attach(io: File.open(Rails.root.join('app/assets/images/post-hamburg-steak3.jpg')), filename: 'post-hamburg-steak3.jpg')exchange1.save!
+end
 
 Genre.destroy_all
 Genre.create!([

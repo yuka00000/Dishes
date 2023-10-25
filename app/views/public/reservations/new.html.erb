@@ -15,7 +15,7 @@
         <%= form_with model: @reservation, url: restaurant_reservations_path do |f| %>
           <table class="table">
             <tr>
-              <th><%= f.label :日時 %></th>
+              <th><%= f.label :日付 %></th>
               <td></td>
               <td>
                 <%= f.date_field :date, class: 'form-control' %>
