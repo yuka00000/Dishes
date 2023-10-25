@@ -15,7 +15,6 @@
             <td><%= restaurant.name %></td>
             <td><%= restaurant.explanation %></td>
             <td>
-              <%= link_to "戻る", admin_top_path, class: "btn btn-secondary" %>
               <%= link_to "強制退会", admin_restaurant_path(restaurant), method: :delete, data: { confirm: "本当に強制退会させますか？" }, class: "btn btn-secondary" %>
             </td>
         <% end %>

@@ -15,6 +15,7 @@ onigiri = User.find_or_create_by!(email: "onigiri@example.com") do |user|
   user.phone_number = "00000000000"
   user.introduction = "和食が好きです！"
   user.password = "password"
+  user.last_sign_in_at = "2023/10/24 19:28"
   user.user_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/user-onigiri.png"), filename:"user-onigiri.png")
 end
 
@@ -27,6 +28,7 @@ cat = User.find_or_create_by!(email: "cat@example.com") do |user|
   user.phone_number = "00000000000"
   user.introduction = "カフェが好きです！"
   user.password = "password"
+  user.last_sign_in_at = "2023/10/28 16:55"
   user.user_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/user-cat.jpg"), filename:"user-cat.jpg")
 end
 
@@ -39,6 +41,7 @@ chick = User.find_or_create_by!(email: "chick@example.com") do |user|
   user.phone_number = "00000000000"
   user.introduction = "甘党です"
   user.password = "password"
+  user.last_sign_in_at = "2023/10/25 12:28"
   user.user_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/user-chick.png"), filename:"user-chick.png")
 end
 
@@ -51,6 +54,7 @@ bread = User.find_or_create_by!(email: "bread@example.com") do |user|
   user.phone_number = "00000000000"
   user.introduction = "ハンバーガーが好きです"
   user.password = "password"
+  user.last_sign_in_at = "2023/10/22 08:15"
   user.user_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/user-bread.png"), filename:"user-bread.png")
 end
 
@@ -63,6 +67,7 @@ ladybug = User.find_or_create_by!(email: "ladybug@example.com") do |user|
   user.phone_number = "00000000000"
   user.introduction = "焼肉が好きです！"
   user.password = "password"
+  user.last_sign_in_at = "2023/10/23 18:17"
   user.user_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/user-ladybug.png"), filename:"user-ladybug.png")
 end
 
@@ -75,6 +80,7 @@ wolf = User.find_or_create_by!(email: "wolf@example.com") do |user|
   user.phone_number = "00000000000"
   user.introduction = "中華が好きです"
   user.password = "password"
+  user.last_sign_in_at = "2023/10/25 21:00"
   user.user_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/user-wolf.png"), filename:"user-wolf.png")
 end
 
@@ -143,7 +149,7 @@ hamburg_steak = Restaurant.find_or_create_by!(email: "hamburg-steak@example.com"
 end
 
 hamburg_steak2 = Restaurant.find_or_create_by!(email: "hamburg-steak2@example.com") do |restaurant|
-  restaurant.name = "炭焼きハンバーグ"
+  restaurant.name = "炭焼きレストラン"
   restaurant.explanation = "ハンバーグの焼き加減はレアがおすすめです！"
   restaurant.price_upper_limit = 4999
   restaurant.price_lower_limit = 3000
@@ -195,14 +201,34 @@ admin = Admin.find_or_create_by!(email: "admin@example.com") do |admin|
   admin.password = "password"
 end
 
-post_hamburg_steak3 = Post.find_or_create_by!(title: '都内の美味しいハンバーグ【第3位】') do |post|
+post_hamburg_steak3 = Post.find_or_create_by!(id: 1) do |post|
+  post.id = 1
   post.title = "都内の美味しいハンバーグ【第3位】"
   post.body = "第3位は武蔵野市吉祥寺にある「満腹食堂」です。ハンバーグにチキン、ソーセージとボリューム満点！ハンバーグは、ジューシーで美味しく、スープ、サラダ、ご飯のセットで700円とコスパも最高です！"
-  post.user = User.find_by(email: 'onigiri@example.com')  
-  post.restaurant = Restaurant.find_or_create_by!(name: '満腹食堂')
+  post.user = User.find_by(email: 'onigiri@example.com')
+  post.restaurant = Restaurant.find_by(name: '満腹食堂')
   post.hashbody = "#東京都" "#吉祥寺" "#グルメ" "#ハンバーグ" "#コスパ" "#大盛り"
   post.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/post-hamburg-steak3.jpg"), filename:"post-hamburg-steak3.jpg")
-  #exchange1.exchange_post_images.attach(io: File.open(Rails.root.join('app/assets/images/post-hamburg-steak3.jpg')), filename: 'post-hamburg-steak3.jpg')exchange1.save!
+end
+
+post_hamburg_steak = Post.find_or_create_by!(id: 2) do |post|
+  post.id = 2
+  post.title = "都内の美味しいハンバーグ【第2位】"
+  post.body = "第2位は板橋区要町の「ひき肉と卵」です。ハンバーグは10種類の薬味と食べることができ、新鮮な卵を使った卵かけごはんも絶品です！お昼はかなり並ぶので、早めに行くことをお勧めします。"
+  post.user = User.find_by(email: 'onigiri@example.com')
+  post.restaurant = Restaurant.find_by(name: 'ひき肉と卵')
+  post.hashbody = "#東京都" "#要町" "#グルメ" "#ハンバーグ" "#ひき肉と卵" "卵" "卵かけご飯"
+  post.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/post-hamburg-steak.jpg"), filename:"post-hamburg-steak.jpg")
+end
+
+post_hamburg_steak2 = Post.find_or_create_by!(id: 3) do |post|
+  post.id = 3
+  post.title = "都内の美味しいハンバーグ【第1位】"
+  post.body = "第1位は新宿区西新宿の「炭焼きレストラン」です。行列必須の大人気店！オニオンソースがよく合うハンバーグです。焼き加減は4段階から選ぶことができます！"
+  post.user = User.find_by(email: 'onigiri@example.com')
+  post.restaurant = Restaurant.find_by(name: '炭焼きレストラン')
+  post.hashbody = "#東京都" "#西新宿" "#グルメ" "#ハンバーグ" "#炭焼きレストラン"
+  post.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/post-hamburg-steak2.jpg"), filename:"post-hamburg-steak2.jpg")
 end
 
 Genre.destroy_all
