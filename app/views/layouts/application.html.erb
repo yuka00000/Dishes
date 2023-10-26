@@ -14,7 +14,7 @@
   <body>
     <div class="wrapper">
       <%= render 'layouts/header' %>
-      <main class="page-body row">
+      <main class="page-body d-flex">
         <% if user_signed_in? %>
           <div class="col-md-2" style="background-color:#756560;">
             <%= render 'layouts/sidebar', user: @user %>

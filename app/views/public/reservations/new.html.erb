@@ -26,13 +26,7 @@
               <th><%= f.label :時間 %></th>
               <td></td>
               <td>
-                <%= f.time_field :time, step: 1800, list: "data-list", class: 'form-control' %>
-                <datalist id="data-list">
-                  <%= 24.times do |i| %>
-                    <option value="<%= sprintf("%02d",i) %>:00"></option>
-                    <option value="<%= sprintf("%02d",i) %>:30"></option>
-                  <% end %>
-                </datalist>
+                <%= f.select :time, @open_and_close_time, include_blank: "選択して下さい" %>
                 <p>
                   ※<%= @restaurant.name %>の営業時間：<%= @restaurant.opening_time.strftime("%H:%M") %> ～ <%= @restaurant.closing_time.strftime("%H:%M") %>
                 </p>

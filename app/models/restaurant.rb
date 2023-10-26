@@ -19,6 +19,8 @@ class Restaurant < ApplicationRecord
   validates :opening_time, presence: true
   validates :closing_time, presence: true
 
+  validate :upper_and_lower_check
+
   enum reservation_method: { internet: 0, phone: 1, reservation_none: 2 }
 
   def self.price_lower_limit_values
@@ -35,5 +37,9 @@ class Restaurant < ApplicationRecord
       restaurant_image.attach(io: File.open(file_path), filename: 'no-image.jpg', content_type: 'image/jpeg')
     end
     restaurant_image.variant(resize_to_limit: [width, height]).processed
+  end
+
+  def upper_and_lower_check
+    errors.add(:base, "下限価格が上限価格を上回っています。") if price_upper_limit < price_lower_limit
   end
 end
