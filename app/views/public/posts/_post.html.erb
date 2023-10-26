@@ -10,7 +10,7 @@
              <%= image_tag post.user.get_user_image(40,40), class:"mt-2 rounded-circle w-100"; %>
           </div>
           <div class="col-8 ml-3 mt-2 p-0">
-            <p class="card-title">
+            <p>
               <%= link_to user_path(post.user_id), style:"color:black;" do %>
                 <i class="fas fa-user"></i>
                 <%= post.user.user_name %>

@@ -33,13 +33,13 @@ class Restaurant < ApplicationRecord
 
   def get_restaurant_image(width, height)
     unless restaurant_image.attached?
-      file_path = Rails.root.join('app/assets/images/no_image.jpg')
-      restaurant_image.attach(io: File.open(file_path), filename: 'no-image.jpg', content_type: 'image/jpeg')
+      file_path = Rails.root.join('app/assets/images/no_image.png')
+      restaurant_image.attach(io: File.open(file_path), filename: 'no_image.png', content_type: 'image/png')
     end
     restaurant_image.variant(resize_to_limit: [width, height]).processed
   end
 
   def upper_and_lower_check
-    errors.add(:base, "下限価格が上限価格を上回っています。") if price_upper_limit < price_lower_limit
+    errors.add(:base, "下限価格が上限価格を上回っています。") if price_upper_limit && price_lower_limit && price_upper_limit < price_lower_limit
   end
 end
