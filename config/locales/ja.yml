@@ -43,6 +43,27 @@ ja:
         title: "タイトル"
         body: "本文"
         get_post_image: "画像"
+      user:
+        first_name: "名前"
+        last_name: "苗字"
+        first_name_kana: "名前のフリガナ"
+        last_name_kana: "苗字のフリガナ"
+        user_name: "ユーザー名"
+        phone_number: "電話番号"
+        introduction: "自己紹介"
+      restaurant:
+        name: "店名"
+        explanation: "紹介文"
+        price_upper_limit: "上限価格"
+        price_lower_limit: "下限価格"
+        reservation_method: "予約方法"
+        phone_number: "電話番号"
+        post_code: "郵便番号"
+        address: "住所"
+        opening_time: "開店時間"
+        closing_time: "閉店時間"
+        email: "Eメール"
+        password: "パスワード"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

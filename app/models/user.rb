@@ -5,7 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :first_name, presence: true, length: { in: 1..20 }
-  #validates :user_name, presence: true, uniqueness: true
+  validates :last_name, presence: true, length: { in: 1..20 }
+  validates :first_name_kana, presence: true, length: { in: 1..20 }
+  validates :last_name_kana, presence: true, length: { in: 1..20 }
+  validates :user_name, presence: true, uniqueness: true, length: { in: 1..20 }
+  validates :phone_number, presence: true
   validates :introduction, length: { maximum: 50 }
 
   def self.guest
