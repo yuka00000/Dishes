@@ -231,6 +231,47 @@ post_hamburg_steak2 = Post.find_or_create_by!(id: 3) do |post|
   post.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/post-hamburg-steak2.jpg"), filename:"post-hamburg-steak2.jpg")
 end
 
+post_pancake = Post.find_or_create_by!(id: 4) do |post|
+  post.id = 4
+  post.title = "有名なパンケーキ屋！"
+  post.body = "パンケーキが人気のお店に行ってきました！2時間並びましたが、パンケーキは2段になっており、ふわふわで美味しかったです！"
+  post.user = User.find_by(email: 'ladybug@example.com')
+  post.restaurant = Restaurant.find_by(name: '幸せパンケーキ')
+  post.hashbody = "#東京都" "#スイーツ" "#パンケーキ"
+  post.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/post-pancake.jpg"), filename:"post-pancake.jpg")
+end
+
+post_shortcake = Post.find_or_create_by!(id: 5) do |post|
+  post.id = 5
+  post.title = "おすすめのショートケーキ"
+  post.body = "パンケーキが看板メニューのお店ですが、今回はショートケーキを注文。パンケーキ以外頼んだことがなかったのですが、ショートケーキも美味しかったのでおすすめです！"
+  post.user = User.find_by(email: 'wolf@example.com')
+  post.restaurant = Restaurant.find_by(name: '幸せパンケーキ')
+  post.hashbody = "#神保町" "#東京グルメ" "#ケーキ"
+  post.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/post-shortcake.png"), filename:"post-shortcake.png")
+end
+
+post_chinese = Post.find_or_create_by!(id: 6) do |post|
+  post.id = 6
+  post.title = "チャーハンの美味しいお店を紹介！"
+  post.body = "浅草にある「広東飯点」に行ってきました！様々な料理を頼みましたが、チャーハンが特に美味しかったです。"
+  post.user = User.find_by(email: 'bread@example.com')
+  post.restaurant = Restaurant.find_by(name: '広東飯点')
+  post.hashbody = "#浅草" "#浅草グルメ" "#チャーハン" "中華"
+  post.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/post-friedrice.jpg"), filename:"post-friedrice.jpg")
+end
+
+post_reiwa = Post.find_or_create_by!(id: 7) do |post|
+  post.id = 7
+  post.title = "令和食堂に行ってきました"
+  post.body = "令和食堂でミックスフライ定食を注文。コスパも良く店員さんも親切でした！"
+  post.user = User.find_by(email: 'chick@example.com')
+  post.restaurant = Restaurant.find_by(name: '令和食堂')
+  post.hashbody = "#東京" "#フライ" "#揚げ物" "#コスパ"
+  post.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/post-mixfri.jpg"), filename:"post-mixfri.jpg")
+end
+
+
 Genre.destroy_all
 Genre.create!([
 {name:  "和食"},
