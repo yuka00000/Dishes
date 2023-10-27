@@ -21,6 +21,7 @@ class User < ApplicationRecord
       user.first_name_kana = "ゲスト"
       user.user_name = "ゲスト"
       user.phone_number = "ゲスト"
+      user.last_sign_in_at = "2023/10/23 20:17"
     end
   end
   #find_or_create_by!:指定した条件でデータを検索し、存在すればそのデータを返し、存在しなければ新しいデータを作成するメソッド
