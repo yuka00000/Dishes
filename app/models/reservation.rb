@@ -9,15 +9,20 @@ class Reservation < ApplicationRecord
   validate :date_three_month_end
 
   def date_before_start
-    errors.add(:date, "は過去の日付は選択できません。") if date < Date.current
+    if date.present? && date < Date.current
+      errors.add(:date, "は過去の日付は選択できません。")
+    end
   end
 
   def date_current_today
-    errors.add(:date, "は当日は選択できません。") if date < (Date.current + 1)
+    if date.present? && date < (Date.current + 1)
+      errors.add(:date, "は当日は選択できません。")
+    end
   end
 
   def date_three_month_end
-    errors.add(:date, "は3ヶ月以降の日付は選択できません。") if (Date.current >> 3) < date
+    if date.present? && (Date.current >> 3) < date
+      errors.add(:date, "は3ヶ月以降の日付は選択できません。")
+    end
   end
-
 end

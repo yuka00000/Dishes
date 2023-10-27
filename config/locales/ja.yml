@@ -1,7 +1,7 @@
 ja:
   enums:
-    restaurant: 
-      reservation_method: 
+    restaurant:
+      reservation_method:
         internet: "ネット予約"
         phone: "電話"
         reservation_none: "予約不可"
@@ -64,6 +64,10 @@ ja:
         closing_time: "閉店時間"
         email: "Eメール"
         password: "パスワード"
+      reservation:
+        time: "時間"
+        date: "日付"
+        people_count: "人数"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
