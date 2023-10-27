@@ -2,7 +2,7 @@ class Reservation < ApplicationRecord
   belongs_to :user
   belongs_to :restaurant
   validates :date, presence: true
-  validates :time, presence: true, uniqueness: { scope: [:date, :restaurant_id], message: "は予約できません。他の日程で再度お試しください。" }
+  validates :time, presence: true, uniqueness: { scope: [:date, :restaurant_id], message: "は予約できません。他の時間帯か他の日程で再度お試しください。" }
   validates :people_count, presence: true
   validate :date_before_start
   validate :date_current_today
