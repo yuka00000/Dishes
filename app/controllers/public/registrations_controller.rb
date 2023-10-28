@@ -54,6 +54,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # The path used after sign up.
   def after_sign_in_path_for(resource)
     # super(resource)
+    resource.update(last_sign_in_at: Time.current)
     root_path
   end
 
