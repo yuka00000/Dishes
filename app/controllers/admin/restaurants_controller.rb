@@ -6,7 +6,7 @@ class Admin::RestaurantsController < ApplicationController
 
   def destroy
     Restaurant.find(params[:id]).destroy
-    flash[:success] = "ユーザーを強制退会させました"
+    flash[:notice] = "ユーザーを強制退会させました"
     redirect_to admin_restaurants_path
   end
 end
