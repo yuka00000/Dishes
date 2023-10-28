@@ -11,11 +11,11 @@ class Admin::PostsController < ApplicationController
   def destroy
     if params[:type] == "posts"
       Post.find(params[:id]).destroy
-      flash[:success] = "投稿を削除しました。"
+      flash[:notice] = "投稿を削除しました。"
       redirect_to admin_posts_path
     else
       User.find(params[:id]).destroy
-      flash[:success] = "ユーザーを強制退会させました"
+      flash[:notice] = "ユーザーを強制退会させました"
       redirect_to admin_posts_path
     end
   end
