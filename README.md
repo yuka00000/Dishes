@@ -21,7 +21,11 @@
  - 美味しかったものの記録を残したい時
 
 ## 設計書
-後ほど作成予定
+- UI Flows(ユーザー側)：https://app.diagrams.net/#G1sRPUfg-3Jk2Fm1SHG-KRqYsuHSmiSWr7
+- UI Flows(飲食店側)：https://app.diagrams.net/#G1sRPUfg-3Jk2Fm1SHG-KRqYsuHSmiSWr7#%7B%22pageId%22%3A%22a2IgGAC2z2glnT8deztM%22%7D
+- UI Flows(管理者側)：https://app.diagrams.net/#G1sRPUfg-3Jk2Fm1SHG-KRqYsuHSmiSWr7#%7B%22pageId%22%3A%222x8Ef0a1WY9LgUk5NDlB%22%7D
+- ER図：https://app.diagrams.net/#G1sRPUfg-3Jk2Fm1SHG-KRqYsuHSmiSWr7#%7B%22pageId%22%3A%22LJNX1gS-vJywMCtBq2Rv%22%7D
+- アプリケーション詳細設計書https://docs.google.com/spreadsheets/d/1Fv9AuTUzA1QW5wNHsaCR1jepLz9J6oKfP9MWNk6AgtM/edit#gid=0
 
 ## 開発環境
 - OS：Linux(CentOS)
