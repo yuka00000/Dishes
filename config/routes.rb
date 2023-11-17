@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     get '/reservation_complete', to: 'reservations#complete', as: 'reservation_completed'
     get 'rank' => 'ranks#rank'
     resources :favorites, only: [:index]
-    resources :users, only: [:show, :edit, :update, :destroy] do
+    resources :users, only: [:show, :edit, :update] do
       member do
         get :follows, :followers
       end
@@ -52,7 +52,7 @@ Rails.application.routes.draw do
   namespace :restaurant_info do
     get 'top' => 'homes#top'
     get 'restaurants/mypage' => 'restaurants#show'
-    resources :restaurants, only: [:show, :edit, :update, :destroy] do
+    resources :restaurants, only: [:edit, :update] do
       resources :reservations, only: [:index]
     end
   end

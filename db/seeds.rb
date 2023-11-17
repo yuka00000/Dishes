@@ -197,7 +197,6 @@ french_kitchen = Restaurant.find_or_create_by!(email: "french@example.com") do |
 end
 
 admin = Admin.find_or_create_by!(email: "admin@example.com") do |admin|
-  admin.name = "admin"
   admin.password = "password"
 end
 
