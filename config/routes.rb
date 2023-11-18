@@ -25,7 +25,6 @@ Rails.application.routes.draw do
     root to: "homes#top"
     get "search" => "searches#search"
     get '/post/hashtag/:name' => 'posts#hashtag'
-    get '/post/hashtag' => 'posts#hashtag'
     get '/reservation_complete', to: 'reservations#complete', as: 'reservation_completed'
     get 'rank' => 'ranks#rank'
     resources :favorites, only: [:index]
