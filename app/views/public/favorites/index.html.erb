@@ -32,9 +32,9 @@
                         <%= favorite.post.post_comments.count %>
                       <% end %>
                     </p>
-                    <p>
-                      <%= render 'public/favorites/btn', post: favorite.post, class:"text-dark" %>
-                    </p>
+                    <span id="favorite_buttons_<%= favorite.post.id %>">
+                      <%= render 'public/favorites/btn', post: favorite.post %>
+                    </span>
                   </div>
                 </div>
               </div>
