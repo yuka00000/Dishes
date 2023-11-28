@@ -19,11 +19,6 @@ class RestaurantInfo::RestaurantsController < ApplicationController
     end
     @restaurants = Restaurant.all
     if @restaurant.update(restaurant_params)
-      @restaurant.genres.destroy_all
-      # ["", "1", "22", "24"]
-      params[:restaurant][:genre_ids].each do |genre_id|
-        @restaurant.restaurant_genres.create(genre_id: genre_id)
-      end
       flash[:notice] = "更新に成功しました。"
       redirect_to restaurant_info_restaurants_mypage_path
     else
@@ -35,7 +30,7 @@ class RestaurantInfo::RestaurantsController < ApplicationController
   private
 
   def restaurant_params
-    params.require(:restaurant).permit(:name, :explanation, :post_code, :address, :price_lower_limit, :price_upper_limit, :hp_url, :reservation_method, :email, :phone_number, :restaurant_image, :opening_time, :closing_time, :genre, :genre_id)
+    params.require(:restaurant).permit(:name, :explanation, :post_code, :address, :price_lower_limit, :price_upper_limit, :hp_url, :reservation_method, :email, :phone_number, :restaurant_image, :opening_time, :closing_time, :genre, genre_ids: [])
   end
 
 end

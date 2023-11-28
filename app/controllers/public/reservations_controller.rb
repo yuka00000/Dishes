@@ -41,7 +41,7 @@ class Public::ReservationsController < ApplicationController
     increment = 1800
     from_time = opening.to_i
     to_time = closing.to_i
-    from_time.step(to_time, increment).map { |m| [Time.at(m).strftime('%H:%M'), Time.at(m).strftime('%H:%M')] }
+    from_time.step(to_time, increment).map { |m| [Time.zone.at(m).strftime('%H:%M'), Time.zone.at(m).strftime('%H:%M')] }
   end
   
   def is_matching_login_user
