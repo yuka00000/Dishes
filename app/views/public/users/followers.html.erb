@@ -1,5 +1,10 @@
 <div class="container">
   <div class="row">
+    <h4 class="title pt-4 offset-md-2">
+      <%= @user.user_name %>さんをフォローしているユーザー
+    </h4>
+  </div>
+  <div class="row">
     <div class="col-md-7 pt-3 offset-md-2">
       <table class='table'>
         <thead>
@@ -11,7 +16,7 @@
           </tr>
         </thead>
         <tbody>
-          <% @user.each do |user| %>
+          <% @users.each do |user| %>
             <tr>
               <td>
                 <%= link_to user_path(user) do %>
