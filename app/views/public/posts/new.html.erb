@@ -20,7 +20,7 @@
               <h5 class="title pt-2">タイトル</h5>
               <%= f.text_field :title %>
               <h5 class="body pt-2">本文</h5>
-              <%= f.text_area :body %>
+              <%= f.text_area :body, placeholder: "(200文字以内)" %>
               <h5 class="restaurant pt-2">お店の名前</h5>
               <select name="post[restaurant_id]">
                 <% Restaurant.all.each do |restaurant| %>
