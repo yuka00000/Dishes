@@ -56,7 +56,7 @@ before_action :authenticate_user!
   def is_matching_login_user
     user = User.find(params[:id])
     unless user.id == current_user.id
-      redirect_to posts__path
+      redirect_to posts_path
     end
   end
  

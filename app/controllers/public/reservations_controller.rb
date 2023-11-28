@@ -27,6 +27,7 @@ class Public::ReservationsController < ApplicationController
   end
 
   def show
+    is_matching_login_user
     @reservation = Reservation.find(params[:id])
   end
 
@@ -42,4 +43,12 @@ class Public::ReservationsController < ApplicationController
     to_time = closing.to_i
     from_time.step(to_time, increment).map { |m| [Time.at(m).strftime('%H:%M'), Time.at(m).strftime('%H:%M')] }
   end
+  
+  def is_matching_login_user
+    reservation = Reservation.find(params[:id])
+    unless reservation.user.id == current_user.id
+      redirect_to posts_path
+    end
+  end
+  
 end
