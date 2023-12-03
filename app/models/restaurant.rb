@@ -23,10 +23,11 @@ class Restaurant < ApplicationRecord
 
   enum reservation_method: { internet: 0, phone: 1, reservation_none: 2 }
 
+#(1..10).map{|i| i * 1000}: 1から10までの範囲を指定し、それぞれに i * 1000 の計算を適用して新しい配列を生成
   def self.price_lower_limit_values
     [ 999 ] + (1..10).map{|i| i * 1000}
   end
-
+#(2..19).map{|i| i * 1000 - 1}: 2から19までの範囲を指定し、それぞれに i * 1000 - 1 の計算を適用して新しい配列を生成
   def self.price_upper_limit_values
     [ 999 ] + (2..19).map{|i| i * 1000 - 1} + [ 20000 ]
   end

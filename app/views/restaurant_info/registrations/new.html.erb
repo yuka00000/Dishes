@@ -49,10 +49,10 @@
                 <%= f.time_field :opening_time, autofocus: true, step: 1800, list: "data-list" %>
                 ～
                 <%= f.time_field :closing_time, autofocus: true, step: 1800, list: "data-list" %>
-                <datalist id="data-list">
-                  <%= 24.times do |i| %>
-                    <option value="<%= sprintf("%02d",i) %>:00"></option>
-                    <option value="<%= sprintf("%02d",i) %>:30"></option>
+                <datalist id="data-list"> <!-- ユーザーが入力する際に候補を表示するためのリストを定義。ここでは id="data-list" でdatalistの識別子を設定 -->
+                  <%= 24.times do |i| %> <!-- 0から23までの数字を順に取り出して、その値を i に代入して繰り返す-->
+                    <option value="<%= sprintf("%02d",i) %>:00"></option> <!-- %02d：常に2桁の整数を表示し、不足する桁はゼロで埋める効果がある-->
+                    <option value="<%= sprintf("%02d",i) %>:30"></option> <!-- sprintfメソッドを使って、iを2桁の数字に変換し、それを :00 と組み合わせて時刻の文字列を生成 -->
                   <% end %>
                 </datalist>
               </td>

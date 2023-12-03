@@ -43,11 +43,14 @@ class Post < ApplicationRecord
   #更新アクション
   before_update do
     post = Post.find_by(id: id)
+    #postに関連付けられたすべてのハッシュタグを削除
     post.hashtags.clear
+    #hashbodyから正規表現にマッチするハッシュタグを取得
     hashtags = hashbody.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
+    #重複したハッシュタグを取り除き、ユニークなハッシュタグのリストを作成
     hashtags.uniq.map do |hashtag|
-      tag = Hashtag.find_or_create_by(hashname: hashtag.downcase.delete('#'))
-      post.hashtags << tag
+      tag = Hashtag.find_or_create_by(hashname: hashtag.downcase.delete('#')) #取得したハッシュタグを元に、既存のハッシュタグを検索し、存在しない場合は新しく作成。ハッシュタグの大文字小文字を区別しないように、downcaseで小文字に変換す。
+      post.hashtags << tag #更新前のpostに新しいハッシュタグを関連付ける
     end
   end
 
