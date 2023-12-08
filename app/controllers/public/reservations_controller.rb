@@ -47,6 +47,7 @@ class Public::ReservationsController < ApplicationController
     from_time.step(to_time, increment).map { |m| [Time.zone.at(m).strftime('%H:%M'), Time.zone.at(m).strftime('%H:%M')] }
   end
   
+  #ログインユーザーと予約ユーザーが一致しているかどうかを確認し、一致しない場合は投稿一覧ページにリダイレクト
   def is_matching_login_user
     reservation = Reservation.find(params[:id])
     unless reservation.user.id == current_user.id
